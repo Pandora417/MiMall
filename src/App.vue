@@ -5,10 +5,20 @@
 </template>
 
 <script>
+import storage from "./storage/index"
 export default {
   name: 'App',
   components: {
     
+  },
+  data(){
+    return {
+
+    }
+  },
+  mounted(){
+    // storage.setItem('b',"2")
+    storage.clear("b")
   }
 }
 </script>
