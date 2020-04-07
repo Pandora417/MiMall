@@ -1,9 +1,9 @@
 <template>
-  <div></div>
+  <div>index</div>
 </template>
 <script>
 export default{
-  name:'Index'
+  name:'index'
 }
 </script>
 <style scoped>
