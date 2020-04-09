@@ -98,8 +98,8 @@
                     <div class="pro-img">
                       <img src="/imgs/nav-img/nav-3-1.jpg">
                     </div>
-                    <div class="pro-name">小米CC9</div>
-                    <div class="pro-price">1799元</div>
+                    <div class="pro-name">小米壁画电视 65英寸</div>
+                    <div class="pro-price">6999元</div>
                   </a>
                 </li>
                 <li class="product">
@@ -107,35 +107,35 @@
                     <div class="pro-img">
                       <img src="/imgs/nav-img/nav-3-2.jpg">
                     </div>
-                    <div class="pro-name">小米CC9</div>
-                    <div class="pro-price">1799元</div>
+                    <div class="pro-name">小米全面屏电视E55A</div>
+                    <div class="pro-price">1999元</div>
                   </a>
                 </li>
                 <li class="product">
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img src="/imgs/nav-img/nav-3-3.jpg">
+                      <img src="/imgs/nav-img/nav-3-3.png">
                     </div>
-                    <div class="pro-name">小米CC9</div>
-                    <div class="pro-price">1799元</div>
+                    <div class="pro-name">小米电视4A 55英寸</div>
+                    <div class="pro-price">699元</div>
                   </a>
                 </li>
                 <li class="product">
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img src="/imgs/nav-img/nav-3-4.png">
+                      <img src="/imgs/nav-img/nav-3-4.jpg">
                     </div>
-                    <div class="pro-name">小米CC9</div>
-                    <div class="pro-price">1799元</div>
+                    <div class="pro-name">小米电视4A 65英寸</div>
+                    <div class="pro-price">2699元</div>
                   </a>
                 </li>
                 <li class="product">
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img src="/imgs/nav-img/nav-3-5.png">
+                      <img src="/imgs/nav-img/nav-3-5.jpg">
                     </div>
-                    <div class="pro-name">小米CC9</div>
-                    <div class="pro-price">1799元</div>
+                    <div class="pro-name">小米壁画电视 65英寸</div>
+                    <div class="pro-price">6999元</div>
                   </a>
                 </li>
                 <li class="product">
@@ -143,8 +143,8 @@
                     <div class="pro-img">
                       <img src="/imgs/nav-img/nav-3-6.png">
                     </div>
-                    <div class="pro-name">小米CC9</div>
-                    <div class="pro-price">1799元</div>
+                    <div class="pro-name">查看全部</div>
+                    <div class="pro-price">查看全部</div>
                   </a>
                 </li>
               </ul>
