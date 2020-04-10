@@ -28,58 +28,13 @@
             <span>小米手机</span>
             <div class="children">
               <ul>
-                <li class="product">
-                  <a href="" target="_blank">
+                <li class="product" v-for="(item,index) in productList" :key="index">
+                  <a v-bind:href="'/#/product/' + item.id" target="_blank">
                     <div class="pro-img">
-                      <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/f515ab05232ed14ccd78ec67e024495a.png">
+                      <img :src="item.mainImage" :alt="item.subtitle">
                     </div>
-                    <div class="pro-name">小米CC9</div>
-                    <div class="pro-price">1799元</div>
-                  </a>
-                </li>
-                <li class="product">
-                  <a href="" target="_blank">
-                    <div class="pro-img">
-                      <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/f515ab05232ed14ccd78ec67e024495a.png">
-                    </div>
-                    <div class="pro-name">小米CC9</div>
-                    <div class="pro-price">1799元</div>
-                  </a>
-                </li>
-                <li class="product">
-                  <a href="" target="_blank">
-                    <div class="pro-img">
-                      <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/f515ab05232ed14ccd78ec67e024495a.png">
-                    </div>
-                    <div class="pro-name">小米CC9</div>
-                    <div class="pro-price">1799元</div>
-                  </a>
-                </li>
-                <li class="product">
-                  <a href="" target="_blank">
-                    <div class="pro-img">
-                      <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/f515ab05232ed14ccd78ec67e024495a.png">
-                    </div>
-                    <div class="pro-name">小米CC9</div>
-                    <div class="pro-price">1799元</div>
-                  </a>
-                </li>
-                <li class="product">
-                  <a href="" target="_blank">
-                    <div class="pro-img">
-                      <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/f515ab05232ed14ccd78ec67e024495a.png">
-                    </div>
-                    <div class="pro-name">小米CC9</div>
-                    <div class="pro-price">1799元</div>
-                  </a>
-                </li>
-                <li class="product">
-                  <a href="" target="_blank">
-                    <div class="pro-img">
-                      <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/f515ab05232ed14ccd78ec67e024495a.png">
-                    </div>
-                    <div class="pro-name">小米CC9</div>
-                    <div class="pro-price">1799元</div>
+                    <div class="pro-name">{{item.name}}</div>
+                    <div class="pro-price">{{item.price | currency}}</div>
                   </a>
                 </li>
               </ul>
@@ -164,7 +119,29 @@
 </template>
 <script>
 export default{
-  name:'NavHeader'
+  name:'NavHeader',
+  data(){
+    return {
+      data:{},
+      productList:[]
+    }
+  },
+  filters:{
+    currency(val){
+      if (!val)return '0.00'
+      return '￥'+val.toFixed(2) + '元'
+    }
+  },
+  mounted(){
+    this.axios.get('product.json').then((res) => { // 只要是放在public文件夹下的json文件都可以不修改配置直接引入
+      let result = res.data;
+      if (result.status == 0) {
+        this.data = result.data;
+        this.productList = this.data.productList;
+      }
+    })
+      
+  }
 }
 </script>
 <style lang="scss" scoped>
