@@ -70,8 +70,34 @@
           <img src="/imgs/banner-1.png">
         </a>
       </div>
-      <div class="product-box"></div>
     </div>
+    <div class="product-box">
+      <div class="container">
+        <h2>手机</h2>
+        <div class="wrapper">
+          <div class="banner-left">
+            <a href="/#/product/1">
+              <img src="/imgs/mix-alpha.jpg" alt="">
+            </a>
+          </div>
+          <div class="list-box">
+            <div class="list" v-for="(item,index) in phoneList" :key="index">
+              <div class="item" v-for="(sub,index) in item" :key="index">
+                <span>新品</span>
+                <div class="item-img">
+                  <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0099822e42b4428cb25c4cdebc6ca53d.jpg?thumb=1&w=200&h=200&f=webp&q=90" alt="">
+                </div>
+                <div class="item-info">
+                  <h3>小米</h3>
+                  <p>骁龙855，索尼4800万超广角微距</p>
+                  <span class="price">2999元</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>}
     <service-bar></service-bar>
   </div>
 </template>
@@ -89,7 +115,7 @@ export default{
   },
   data(){
     return {
-      swiperOptions:{
+      swiperOptions:{ //轮播参数
         autoplay:true,
         loop:true,
         effect : 'cube',
@@ -108,7 +134,7 @@ export default{
           prevEl: '.swiper-button-prev',
         },
       },
-      slideList:[
+      slideList:[ //轮播图片
         {
           id:'1',
           img:'/imgs/slider/slide-1.jpg'
@@ -130,7 +156,7 @@ export default{
           img:'/imgs/slider/slide-5.jpg'
         },
       ],
-      menuList:[
+      menuList:[ //菜单栏中的手机参数
         [
           {
             id:0,
@@ -260,7 +286,7 @@ export default{
           },
         ]
       ],
-      adsList:[
+      adsList:[ //广告位的手机参数
         {
           id:1,
           img:'/imgs/ads/a1.png'
@@ -277,6 +303,13 @@ export default{
           id:4,
           img:'/imgs/ads/a4.jpg'
         },
+      ],
+      phoneList:[ //手机展示区
+        [
+          {},{},{},{}
+        ],[
+          {},{},{},{}
+        ]
       ]
     }
   }
@@ -373,6 +406,78 @@ export default{
     }
     .banner{
       margin-bottom: 50px;
+    }
+    .product-box{
+      background: $colorJ;
+      padding: 30px 0;
+      width: 100%;
+      h2{
+        font-size: $fontF;
+        height: 21px;
+        line-height: 21px;
+        color: $colorB;
+        margin-bottom: 20px;
+      }
+      .wrapper{
+        display: flex;
+        .banner-left{
+          margin-right: 24px;
+          img{
+            width: 224px;
+            height: 619px;
+          }
+        }
+        .list-box{
+          .list{
+            @include flex();
+            width: 986px;
+            margin-bottom: 14px;
+            &:last-child{
+              margin-bottom: 0;
+            }
+            .item{
+              width: 236px;
+              height: 302px;
+              background:#ffffff;
+              text-align: center;
+              span{
+                top: 10px;
+                position: relative;
+              }
+              .item-img{
+                img{
+                  height: 195px;
+                }
+              }
+              .item-info{
+                h3{
+                  color:#333333;
+                  font-size: 14px;
+                  line-height: 14px;
+                  font-weight: bold;
+                }
+                p{
+                  color: $colorD;
+                  line-height: 13px;
+                  margin: 6px auto 13px;
+                }
+                .price{
+                  color: #ff6600;
+                  font-size: 14px;
+                  font-weight: bold;
+                  cursor: pointer;
+                  &:after{
+                    @include bgImg(22px,22px,'/imgs/icon-cart-hover.png');
+                    content:" ";
+                    vertical-align: middle;
+                    margin-left: 5px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 </style>
