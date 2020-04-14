@@ -83,7 +83,7 @@
           <div class="list-box">
             <div class="list" v-for="(item,index) in phoneList" :key="index">
               <div class="item" v-for="(sub,index) in item" :key="index">
-                <span>新品</span>
+                <!-- <span>新品</span> -->
                 <div class="item-img">
                   <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0099822e42b4428cb25c4cdebc6ca53d.jpg?thumb=1&w=200&h=200&f=webp&q=90" alt="">
                 </div>
@@ -443,10 +443,15 @@ export default{
               span{
                 top: 10px;
                 position: relative;
+                // display: inline-block;
+                // width: 67px;
+                // height: 24px;
+                // background-color: #7ecf68;
               }
               .item-img{
                 img{
                   height: 195px;
+                  width: 100%;
                 }
               }
               .item-info{
@@ -459,7 +464,7 @@ export default{
                 p{
                   color: $colorD;
                   line-height: 13px;
-                  margin: 6px auto 13px;
+                  margin: 10px;
                 }
                 .price{
                   color: #ff6600;
