@@ -19,7 +19,7 @@
   .modal-dialog{
     @include position(absolute,40%,50%,660px,auto);
     background-color: $colorG;
-    transform:translate(-50%,-50%);
+    transform:translate(-50%,-50%);//使之位移居中
     .modal-header{
       height:60px;
       background-color: $colorJ;
@@ -28,9 +28,9 @@
       font-size:$fontI;
       .icon-close{
         @include positionImg(absolute,23px,25px,14px,14px,'/imgs/icon-close.png');
-        transition: transform .3s;
+        transition: transform .3s;  //放大过渡效果0.3s
         &:hover{
-          transform: scale(1.5);
+          transform: scale(1.5);  //覆盖上去的时候变成1.5倍大
         }
       }
     }

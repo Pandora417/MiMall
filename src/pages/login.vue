@@ -6,6 +6,6 @@ export default{
   name:'login'
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
 
 </style>
