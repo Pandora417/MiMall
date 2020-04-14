@@ -1,12 +1,13 @@
 .modal{
   @include position(fixed);
   z-index: 10;
-  transition: all .5s;
+  transition: all .5s;//z指定所有属性
   .mask{
     @include position(fixed);
     background-color: $colorI;
     opacity: 0.5;
   }
+  // 顺序也有要求，不然动画不成功
   &.slide-enter-active{
     top:0;
   }

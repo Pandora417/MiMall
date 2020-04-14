@@ -90,7 +90,7 @@
                 <div class="item-info">
                   <h3>小米</h3>
                   <p>骁龙855，索尼4800万超广角微距</p>
-                  <span class="price">2999元</span>
+                  <span class="price" @click="addCart()">2999元</span>
                 </div>
               </div>
             </div>
@@ -102,9 +102,12 @@
     <modal 
       title="提示" 
       sureText="查看购物车" 
-      btnType="1"
+      btnType="2"
       modalType="middle"
-      :showModal="true">
+      :showModal="showModal"
+      @submit="goToCart()"
+      @cancel="showModal=false"
+    >
       <template v-slot:body>
         <p>商品添加成功!</p>
       </template>
@@ -322,7 +325,17 @@ export default{
         ],[
           {},{},{},{}
         ]
-      ]
+      ],
+      showModal:false
+    }
+  },
+  methods:{
+    addCart () {
+      this.showModal=true;
+      //做登录拦截
+    },
+    goToCart () {
+      this.$router.push('/cart')
     }
   }
 }
