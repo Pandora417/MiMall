@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import VueLazyLoad from 'vue-lazyload'
 import App from './App.vue'
 // import env from './env'
 
@@ -28,6 +29,9 @@ import App from './App.vue'
 
 Vue.use(VueAxios,axios)
 Vue.prototype.$axios = axios
+Vue.use(VueLazyLoad,{
+  loading:'/imgs/loading-svg/loading-bars.svg'
+})
 Vue.config.productionTip = false //生产环境的提示
 
 new Vue({

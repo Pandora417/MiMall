@@ -62,12 +62,12 @@
       </div>
       <div class="ads-box">
         <a :href="'/#/product/'+ item.id" v-for="item in adsList" :key="item.id">
-          <img :src="item.img">
+          <img v-lazy="item.img">
         </a>
       </div>
       <div class="banner">
         <a :href="'/#/product/1'">
-          <img src="/imgs/banner-1.png">
+          <img v-lazy="'/imgs/banner-1.png'">
         </a>
       </div>
     </div>
@@ -77,7 +77,7 @@
         <div class="wrapper">
           <div class="banner-left">
             <a href="/#/product/1">
-              <img src="/imgs/mix-alpha.jpg" alt="">
+              <img v-lazy="'/imgs/mix-alpha.jpg'" alt="">
             </a>
           </div>
           <div class="list-box">
@@ -85,7 +85,7 @@
               <div class="item" v-for="(sub,index) in item" :key="index">
                 <!-- <span>新品</span> -->
                 <div class="item-img">
-                  <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0099822e42b4428cb25c4cdebc6ca53d.jpg?thumb=1&w=200&h=200&f=webp&q=90" alt="">
+                  <img v-lazy="'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0099822e42b4428cb25c4cdebc6ca53d.jpg?thumb=1&w=200&h=200&f=webp&q=90'">
                 </div>
                 <div class="item-info">
                   <h3>小米</h3>
