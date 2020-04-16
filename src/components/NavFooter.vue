@@ -7,9 +7,9 @@
     <div class="footer-link">
       <a href="javascript:;" target="_blank">帮助中心</a><span>|</span>
       <a href="javascript:;" target="_blank">关于我们</a><span>|</span>
-      <a href="https://www.mi.com/about/user-agreement" target="_blank">小米商城用户协议 </a><span>|</span>
-      <a href="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ded8d0e4a77d.html" target="_blank">小米商城隐私政策</a><span>|</span>
-      <a href="https://static.mi.com/feedback/" target="_blank">问题反馈</a>
+      <a href="javascript:;" target="_blank">小米商城用户协议 </a><span>|</span>
+      <a href="javascript:;" target="_blank">小米商城隐私政策</a><span>|</span>
+      <a href="javascript:;" target="_blank">问题反馈</a>
     </div>
     <div class="footer-copyright">Copyright ©2020 潘倩 All Rights Reserved.</div>
   </div>

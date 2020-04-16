@@ -102,7 +102,7 @@
     <modal 
       title="提示" 
       sureText="查看购物车" 
-      btnType="2"
+      btnType="3"
       modalType="middle"
       :showModal="showModal"
       @submit="goToCart()"
@@ -335,6 +335,11 @@ export default{
       //做登录拦截
     },
     goToCart () {
+      // 此处要添加判断
+      // let path=location.hash;
+      // if (path != '/#/index'){
+      //   window.location.href = '/#/login'
+      // }
       this.$router.push('/cart')
     }
   }

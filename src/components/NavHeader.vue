@@ -9,11 +9,16 @@
           <a href="javascript:;">协议规则</a>
         </div>
         <div class="top-user">
-          <a href="javascript:;">登录</a>
-          <a href="javascript:;">注册</a>
-          <a href="javascript:;" class="my-cart">
+          <a href="javascript:;" v-if="username">{{username}}</a>
+          <a href="javascript:;" v-if="username">我的订单</a>
+          <a href="javascript:;" v-if="!username" @click="login">登录</a>
+          <a href="javascript:;" v-if="username" @click="logout">退出</a>
+          <!-- <a :href="'/#/login'" v-if="!username">登录</a> -->
+          <a href="javascript:;" v-if="!username">注册</a>
+          <a href="/#/cart" class="my-cart">
             <span class="icon-cart"></span>
-            购物车
+            购物车&nbsp;&nbsp;
+            <span v-if="username">({{cartCount}})</span>
           </a>
         </div>
       </div>
@@ -118,12 +123,43 @@
   </div>
 </template>
 <script>
+import {mapState} from 'vuex'
 export default{
   name:'NavHeader',
   data(){
     return {
       data:{},
-      productList:[]
+      productList:[],
+      styleObject:{
+        display:'none'
+      }
+    }
+  },
+  computed:{
+    //可解决变量延迟问题
+    /**username(){
+      return this.$store.state.username;
+    },
+    cartCount(){
+      return this.$store.state.cartCount;
+    },*/
+    ...mapState(['username','cartCount'])
+  },
+  methods:{
+    login(){
+      this.$router.push('/login');
+    },
+    logout(){
+      // this.$router.push('/index');
+    },
+    getProductList(){
+      this.axios.get('product.json').then((res) => { // 只要是放在public文件夹下的json文件都可以不修改配置直接引入
+        let result = res.data;
+        if (result.status == 0) {
+          this.data = result.data;
+          this.productList = this.data.productList;
+        }
+      })
     }
   },
   filters:{
@@ -133,14 +169,7 @@ export default{
     }
   },
   mounted(){
-    this.axios.get('product.json').then((res) => { // 只要是放在public文件夹下的json文件都可以不修改配置直接引入
-      let result = res.data;
-      if (result.status == 0) {
-        this.data = result.data;
-        this.productList = this.data.productList;
-      }
-    })
-      
+    this.getProductList();
   }
 }
 </script>
@@ -164,6 +193,7 @@ export default{
           width:110px;
           background-color: $colorA;
           text-align: center;
+          margin-right: 0px;
           color: $colorG;
           .icon-cart{
             display: inline-block;

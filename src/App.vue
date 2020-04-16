@@ -5,8 +5,6 @@
 </template>
 
 <script>
-import './assets/scss/reset.scss'
-
 export default {
   name: 'App',
   components: {
@@ -18,7 +16,21 @@ export default {
     }
   },
   mounted(){
-    
+    this.getCartCount();
+    this.getUserInfo();
+  },
+  methods:{
+    getUserInfo(){
+      this.axios.get('login.json').then(()=>{
+        //to-do 保存到vuex里面
+        // this.$store.dispatch('saveUserName',res.username);
+      })
+    },
+    getCartCount(){
+      this.axios.get('login.json').then(()=>{
+        //to-do 保存到vuex里面
+      });
+    }
   }
 }
 </script>
