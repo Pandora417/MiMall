@@ -1,0 +1,11 @@
+{
+  "status": 0,
+  "data": {
+    "id": 33,
+    "name": "小米9",
+    "subtitle": "小米9 战斗天使",
+    "mainImage": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/2c9307e9690dfbca39d8de770a7a8664.png",
+    "status":1,
+    "price": 2599
+  }
+}

@@ -9,6 +9,7 @@
           <a href="javascript:;">协议规则</a>
         </div>
         <div class="top-user">
+          <a href="/#/index">首页</a>
           <a href="javascript:;" v-if="username">{{username}}</a>
           <a href="javascript:;" v-if="username">我的订单</a>
           <a href="javascript:;" v-if="!username" @click="login">登录</a>

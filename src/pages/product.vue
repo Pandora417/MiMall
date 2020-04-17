@@ -1,14 +1,14 @@
 <template>
   <div class="product">
-    <product-param title="小米9">
+    <product-param :title="product.name">
       <template v-slot:buy>
         <button class="btn" @click="buy">立即购买</button>
       </template>
     </product-param>
     <div class="content">
       <div class="item-bg">
-        <h2>小米9</h2>
-        <h3>小米9 战斗天使</h3>
+        <h2>{{product.name}}</h2>
+        <h3>{{product.subtitle}}</h3>
         <p>
           <a href="" id="">全球首款双频 GP</a>
           <span>|</span>
@@ -19,7 +19,7 @@
           <a href="" id="">红外人脸识别</a>
         </p>
         <div class="price">
-          <span>￥<em>2599</em></span>
+          <span>￥<em>{{product.price}}</em></span>
         </div>
       </div>
       <div class="item-bg-2"></div>
@@ -34,7 +34,7 @@
             <!-- Optional controls -->
             <div class="swiper-pagination"  slot="pagination"></div>
         </swiper>
-        <p class="desc">小米8 AI变焦双摄拍摄</p>
+        <p class="desc">{{product.name}} AI变焦双摄拍摄</p>
       </div>
       <div class="item-video">
         <h2>60帧超慢动作摄影<br/>慢慢回味每一瞬间的精彩</h2>
@@ -88,18 +88,20 @@ export default{
       setTimeout(()=>{
         this.showSlide='';
       },600)
-    }
+    },
     // 获取产品详情消息
-    // getProductInfo(){
-    //   let id = this.$route.params.id;
-    //   this.axios.get(`product${id}.json`).then((res)=>{
-    //     this.product = res;
-    //   })
-    // }
+    getProductInfo(){
+      let id = this.$route.params.id;
+      console.log(id)
+      this.axios.get('product'+ id +'.json').then((res)=>{
+
+        this.product = res.data.data;
+      })
+    }
+  },
+  mounted(){
+    this.getProductInfo()
   }
-  // mounted(){
-  //   this.getProductInfo()
-  // }
 }
 </script>
 <style scoped lang="scss">

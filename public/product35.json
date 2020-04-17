@@ -1,0 +1,11 @@
+{
+  "status": 0,
+  "data": {
+    "id": 35,
+    "name": "小米MIX Alpha",
+    "subtitle": "5G环绕屏概念手机",
+    "mainImage": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/5d19da60f9f62eb2aa5dcdbd7df19f0f.png",
+    "status":1,
+    "price": 19999
+  }
+}
