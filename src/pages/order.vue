@@ -1,7 +1,7 @@
 <template>
   <div>
     order
-    <order-header></order-header>
+    <order-header title="订单"></order-header>
     <router-view></router-view>
     <order-footer></order-footer>
   </div>

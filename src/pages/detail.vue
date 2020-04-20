@@ -107,8 +107,14 @@ export default{
       pro.quantity=1;
       this.detailCart.push(pro)
       console.log(this.detailCart);
+    
       // this.$store.dispatch('saveCartCount',this.detailCart);
-      this.$router.push('/cart');
+      this.$router.push({
+        name:'cart',
+        query:{
+          routeParams:JSON.stringify(this.detailCart)
+        }
+      });
     },
     getProductInfo(){
       this.axios.get('product'+ this.id +'.json').then((res)=>{

@@ -347,7 +347,13 @@ export default{
       // if (path != '/#/index'){
       //   window.location.href = '/#/login'
       // }
-      this.$router.push('/cart')
+      
+      this.$router.push({
+        name:'cart',
+        query:{
+          routeParams:JSON.stringify(this.indexCart)
+        }
+      });
     },
     getPhoneList(){
       this.axios.get('phoneList8.json').then((res)=>{
