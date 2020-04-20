@@ -1,0 +1,11 @@
+{
+  "status": 0,
+  "data": {
+    "id": 6,
+    "name": "Redmi K30 5G",
+    "subtitle": "双模5G，120Hz流速屏",
+    "mainImage": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/53641901fbc28cbcdb495b17fdf69e46.jpg?thumb=1&w=200&h=200&f=webp&q=90",
+    "status":1,
+    "price": 1999
+  }
+}

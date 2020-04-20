@@ -1,0 +1,11 @@
+{
+  "status": 0,
+  "data": {
+    "id": 8,
+    "name": "Redmi 8A",
+    "subtitle": "5000mAh超长续航",
+    "mainImage": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c924c3f3436b6934495fd98f159ee3f7.jpg?thumb=1&w=200&h=200&f=webp&q=90",
+    "status":1,
+    "price": 599
+  }
+}

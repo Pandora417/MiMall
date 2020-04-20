@@ -1,0 +1,11 @@
+{
+  "status": 0,
+  "data": {
+    "id": 4,
+    "name": "小米10 Pro",
+    "subtitle": "骁龙865 / 50倍变焦",
+    "mainImage": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ccd09671448c4cdb4a3817f68f788662.jpg?thumb=1&w=200&h=200&f=webp&q=90",
+    "status":1,
+    "price": 4999
+  }
+}

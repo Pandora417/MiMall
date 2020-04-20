@@ -1,0 +1,23 @@
+{
+  "status": 0,
+  "data": {
+    "cartProductVoList": [
+      {
+        "id": 1,
+        "productId": 30,
+        "quantity": 1,
+        "productName": "小米CC9",
+        "productSubtitle": "3200万+4800万 前后双旗舰相机",
+        "productMainImage": "mainimage.jpg",
+        "productPrice": 1799,
+        "productStatus": 1,
+        "productTotalPrice": 7199.22,
+        "productStock": 86,
+        "productSelected": true
+      }
+    ],
+    "cartTotalPrice": 1799,
+    "selectedAll": true,
+    "cartTotalQuantity": 1
+  }
+}

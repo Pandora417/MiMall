@@ -82,15 +82,15 @@
           </div>
           <div class="list-box">
             <div class="list" v-for="(item,index) in phoneList" :key="index">
-              <div class="item" v-for="(sub,index) in item" :key="index">
+              <div class="item" v-for="sub in item" :key="sub.id">
                 <!-- <span>新品</span> -->
                 <div class="item-img">
-                  <img v-lazy="'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0099822e42b4428cb25c4cdebc6ca53d.jpg?thumb=1&w=200&h=200&f=webp&q=90'">
+                  <img v-lazy="sub.mainImage" :alt="sub.subtitle">
                 </div>
                 <div class="item-info">
-                  <h3>小米</h3>
-                  <p>骁龙855，索尼4800万超广角微距</p>
-                  <span class="price" @click="addCart()">2999元</span>
+                  <h3>{{sub.name}}</h3>
+                  <p>{{sub.subtitle}}</p>
+                  <span class="price" @click="addCart(sub.id)">{{sub.price}} 元</span>
                 </div>
               </div>
             </div>
@@ -102,7 +102,7 @@
     <modal 
       title="提示" 
       sureText="查看购物车" 
-      btnType="3"
+      btnType="1"
       modalType="middle"
       :showModal="showModal"
       @submit="goToCart()"
@@ -319,20 +319,27 @@ export default{
           img:'/imgs/ads/a4.jpg'
         },
       ],
-      phoneList:[ //手机展示区
-        [
-          {},{},{},{}
-        ],[
-          {},{},{},{}
-        ]
-      ],
-      showModal:false
+      phoneList:[],//手机展示区
+      showModal:false,
+      indexCart:[], //index页面的加入购物车数组
+      product:{}
     }
   },
   methods:{
-    addCart () {
+    addCart (id) {
       this.showModal=true;
       //做登录拦截
+      this.axios.get('product'+ id +'.json').then((res)=>{
+        this.product = res.data.data;
+        let pro = {}
+        pro.productId=this.product.id;
+        pro.productName=this.product.name;
+        pro.productMainImage=this.product.mainImage;
+        pro.productPrice=this.product.price;
+        pro.quantity=1;
+        this.indexCart.push(pro)
+      })
+      
     },
     goToCart () {
       // 此处要添加判断
@@ -341,7 +348,20 @@ export default{
       //   window.location.href = '/#/login'
       // }
       this.$router.push('/cart')
+    },
+    getPhoneList(){
+      this.axios.get('phoneList8.json').then((res)=>{
+        let result = res.data.data;
+        let arr = []
+        arr[0]=result.phoneList.slice(0,4)
+        arr[1]=result.phoneList.slice(4,8)
+        this.phoneList = arr;
+        console.log(this.phoneList)
+      })
     }
+  },
+  mounted(){
+    this.getPhoneList()
   }
 }
 </script>

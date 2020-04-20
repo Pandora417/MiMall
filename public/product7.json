@@ -1,0 +1,11 @@
+{
+  "status": 0,
+  "data": {
+    "id": 7,
+    "name": "Redmi 8",
+    "subtitle": "5000mAh超长续航",
+    "mainImage": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d295c4fb500d163a7045dc715b47f808.jpg?thumb=1&w=200&h=200&f=webp&q=90",
+    "status":1,
+    "price": 699
+  }
+}

@@ -92,7 +92,6 @@ export default{
     // 获取产品详情消息
     getProductInfo(){
       let id = this.$route.params.id;
-      console.log(id)
       this.axios.get('product'+ id +'.json').then((res)=>{
 
         this.product = res.data.data;

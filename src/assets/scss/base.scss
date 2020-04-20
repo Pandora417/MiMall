@@ -23,6 +23,7 @@ input{  //统一输入框样式
   float: right;
 }
 .clearfix:before,.clearfix:after{
+  //清除浮动
   content:' ';
   display:table;
 }

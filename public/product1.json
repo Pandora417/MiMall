@@ -1,0 +1,11 @@
+{
+  "status": 0,
+  "data": {
+    "id": 1,
+    "name": "小米10",
+    "subtitle": "骁龙865/1亿像素相机",
+    "mainImage": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0099822e42b4428cb25c4cdebc6ca53d.jpg?thumb=1&w=200&h=200&f=webp&q=90",
+    "status":1,
+    "price": 3999
+  }
+}

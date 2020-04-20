@@ -1,0 +1,11 @@
+{
+  "status": 0,
+  "data": {
+    "id": 2,
+    "name": "Redmi K30 Pro",
+    "subtitle": "双模5G，骁龙865，弹出全面屏",
+    "mainImage": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c1aafa589258a4d9fdf49831b457418d.jpg?thumb=1&w=200&h=200&f=webp&q=90",
+    "status":1,
+    "price": 2999
+  }
+}
