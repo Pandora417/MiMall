@@ -10,7 +10,7 @@
         <div class="cart-box">
           <ul class="cart-item-head">
             <li class="col-1">
-              <span class="checkbox" v-bind:class="{'checked':allChecked}" @click="toggleAll"></span>全选
+              <span class="checkbox" :class="{'checked':checkAllFlag}" @click="toggleAll"></span>全选
             </li>
             <li class="col-3">商品名称</li>
             <li class="col-1">单价</li>
@@ -19,40 +19,57 @@
             <li class="col-1">操作</li>
           </ul>
           <ul class="cart-item-list">
-            <li class="cart-item">
+            <li class="cart-item" v-for="(item,index) in cartList" :key="index">
               <div class="item-check">
-                <span class="checkbox"></span>
+                <span 
+                  class="checkbox" 
+                  v-bind:class="{'checked':item.checked}" 
+                  @click="editCart('checked',item)"
+                ></span>
               </div>
               <div class="item-name">
-                <img src="/imgs/item-box-3.jpg" alt="">
-                <span>小米8 6GB 全息幻彩紫 64GB</span>
+                <img v-lazy="item.productMainImage" alt="">
+                <div class="pro-name"><span>{{item.productName}}</span></div>
+                
               </div>
-              <div class="item-price">1999元</div>
+              <div class="item-price">{{item.productPrice}}元</div>
               <div class="item-num">
                 <div class="num-box">
-                  <a href="javascript:;">-</a>
-                  <span>1</span>
-                  <a href="javascript:;">+</a>
+                  <a href="javascript:;" @click="editCart('minus',item)">-</a>
+                  <span>{{item.quantity}}</span>
+                  <a href="javascript:;" @click="editCart('add',item)">+</a>
                 </div>
               </div>
-              <div class="item-total">1999元</div>
-              <div class="item-del"></div>
+              <div class="item-total">{{(item.productPrice*item.quantity) | currency}}</div>
+              <div class="item-del" @click="delCartConfim(item)"></div>
             </li>
           </ul>
         </div>
         <div class="order-wrap clearfix">
           <div class="cart-tip fl">
             <a href="/">继续购物</a>
-            共<span>1</span>件商品，已选择<span>3</span>件
+            共<span>{{cartList.length}}</span>件商品，已选择<span>{{checkedNum}}</span>件
           </div>
           <div class="total fr">
-            合计：<span>2599</span>元
+            合计：<span>{{totalPrice}}</span>元
             <a href="javascript:;" class="btn" @click="order">去结算</a>
           </div>
         </div>
       </div>
     </div>
     <service-bar></service-bar>
+    <modal
+      title="提示" 
+      btnType="3"
+      modalType="middle"
+      :showModal="showModal"
+      @submit="delProduct()"
+      @cancel="showModal=false"
+    >
+      <template v-slot:body>
+        <p>是否删除此商品？</p>
+      </template>
+    </modal>
     <nav-footer></nav-footer>
   </div>
 </template>
@@ -60,42 +77,115 @@
 import OrderHeader from '../components/OrderHeader'
 import ServiceBar from './../components/ServiceBar'
 import NavFooter from './../components/NavFooter'
+import Modal from './../components/Modal'
 export default{
   name:'cart',
   components:{
     OrderHeader,
     ServiceBar,
-    NavFooter
+    NavFooter,
+    Modal
   },
   data(){
     return{
-      list:[],
-      // cartlist:[],//商品列表
+      showModal:false,
+      delItem:'',  //准备删除的商品
       allChecked:false,  //是否全选
       cartTotalPrice:0,  //商品总金额
-      checkedNum:0 //所选商品数
     }
   },
   computed:{
+    //是否全选
+    checkAllFlag(){
+      //当数组中所有对象都返回true时，整体才会返回true
+      return this.cartList.every((item)=>{
+        return item.checked;
+      })
+    },
+    //购物车列表
     cartList(){
-      return this.list.push.apply(this.list,JSON.parse(this.$route.query.routeParams))
+      console.log(this.$store.state.cartList)
+      console.log(localStorage.cartList)
+      console.log(JSON.stringify(this.$store.state.cartList))
+      localStorage.cartList=JSON.stringify(this.$store.state.cartList)
+      // return JSON.parse(localStorage.cartList)
+      return this.$store.state.cartList
+    },
+    //计算总价格
+    totalPrice(){
+      let money =0;
+      this.cartList.forEach((item)=>{
+        if(item.checked){
+          money+=item.productPrice*item.quantity;
+        }
+      })
+      return money;
+    },
+    //已选商品数量
+    checkedNum(){
+      return this.cartList.filter(item=>item.checked).length;
+    }
+  },
+  //过滤器
+  filters:{
+    currency(value){
+      if(!value) return 0.00;
+      return '￥' + value.toFixed(2) + '元';
     }
   },
   methods:{
-    getCartList(){
-      this.list.push.apply(this.list,JSON.parse(this.$route.query.routeParams))
-      console.log(this.cartList)
+    editCart(type,item){  //添加
+      console.log(type)
+      console.log(item.checked)
+      if(type=='add'){
+        if(item.quantity == 10){
+          alert('购买不允许超过10件')
+        }else{
+          item.quantity++;
+        }
+      }else if(type=='minus'){  //减少
+        if(item.quantity == 1){
+          alert('商品至少保留一件')
+        }else{
+          item.quantity--;
+        }
+      }else{  //是否勾选
+        item.checked=!item.checked;
+      }
+      console.log(item.checked)
     },
     // 购物车下单
     order(){
-      this.$router.push('/order/confirm');
+      if(this.checkedNum){
+        this.$router.push('/order/confirm');
+      }
     },
+    //是否全选
     toggleAll(){
-
+      let flag= !this.checkAllFlag;
+      this.cartList.forEach((item)=>{
+        item.checked=flag;
+      })
+    },
+    //删除数据：弹出确认弹框
+    delCartConfim(item){
+      this.delItem=item;
+      this.showModal = true;
+    },
+    //删除产品
+    delProduct(){
+      let delItem=this.delItem;
+      this.cartList.forEach((item,index)=>{
+        if(delItem.productId == item.productId){
+          this.cartList.splice(index,1);
+           this.showModal=false;
+        }
+      })
     }
   },
   mounted(){
-    this.getCartList()
+    // this.getCartList()
+    console.log(JSON.parse(localStorage.cartList))
   }
 
 }
@@ -160,9 +250,11 @@ export default{
                 height:80px;
                 vertical-align:middle;
               }
-              span{
-                margin-left: 30px;
+              .pro-name{
+                width: 255px;
+                
               }
+              
             }
             .item-price{
               flex:1;

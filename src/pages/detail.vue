@@ -99,16 +99,15 @@ export default{
   },
   methods:{
     addCart(){
-      let pro = {}
-      pro.productId=this.product.id;
-      pro.productName=this.product.name;
-      pro.productMainImage=this.product.mainImage;
-      pro.productPrice=this.product.price;
-      pro.quantity=1;
-      this.detailCart.push(pro)
+      // this.getPro;
+      let pro = this.getPro();
+      console.log(pro);
       console.log(this.detailCart);
     
-      // this.$store.dispatch('saveCartCount',this.detailCart);
+      // this.$store.dispatch('saveCartList',pro);
+      // this.$store.dispatch('saveCartList',JSON.stringify(pro));
+      this.$store.dispatch('saveCartList',JSON.stringify(this.detailCart));
+      // this.$store.dispatch('saveCartList',this.detailCart);
       this.$router.push({
         name:'cart',
         query:{
@@ -116,10 +115,22 @@ export default{
         }
       });
     },
+    getPro(){
+      let pro = {}
+      pro.productId=this.product.id;
+      pro.productName=this.product.name;
+      pro.productMainImage=this.product.mainImage;
+      pro.productPrice=this.product.price;
+      pro.subtitle=this.product.subtitle;
+      pro.checked=true;
+      pro.quantity=1;
+      this.detailCart.push(pro)
+      return pro;
+    },
     getProductInfo(){
       this.axios.get('product'+ this.id +'.json').then((res)=>{
         this.product = res.data.data;
-        console.log(this.product)
+        // console.log(this.product)
       })
     }
   },

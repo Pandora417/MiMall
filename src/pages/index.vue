@@ -336,6 +336,8 @@ export default{
         pro.productName=this.product.name;
         pro.productMainImage=this.product.mainImage;
         pro.productPrice=this.product.price;
+        pro.subtitle=this.product.subtitle;
+        pro.checked=true;
         pro.quantity=1;
         this.indexCart.push(pro)
       })
@@ -347,7 +349,7 @@ export default{
       // if (path != '/#/index'){
       //   window.location.href = '/#/login'
       // }
-      
+      this.$store.dispatch('saveCartList',JSON.stringify(this.indexCart));
       this.$router.push({
         name:'cart',
         query:{
@@ -362,7 +364,6 @@ export default{
         arr[0]=result.phoneList.slice(0,4)
         arr[1]=result.phoneList.slice(4,8)
         this.phoneList = arr;
-        console.log(this.phoneList)
       })
     }
   },

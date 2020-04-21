@@ -24,7 +24,8 @@ try {
 
 const state={
   username:defaultName, //登录用户名
-  cartCount:0  //购物车数量
+  cartCount:0,  //购物车数量
+  cartList:[]
 }
 
 export default new Vuex.Store({
