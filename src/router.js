@@ -57,7 +57,7 @@ export default new Router({
           component: OrderList
         },
         {
-          path: 'comfirm',
+          path: 'confirm',
           name: 'order-comfirm',
           component: OrderComfirm
         },
