@@ -99,21 +99,19 @@ export default{
   },
   methods:{
     addCart(){
-      // this.getPro;
-      let pro = this.getPro();
-      console.log(pro);
-      console.log(this.detailCart);
-    
-      // this.$store.dispatch('saveCartList',pro);
-      // this.$store.dispatch('saveCartList',JSON.stringify(pro));
-      this.$store.dispatch('saveCartList',JSON.stringify(this.detailCart));
-      // this.$store.dispatch('saveCartList',this.detailCart);
-      this.$router.push({
-        name:'cart',
-        query:{
-          routeParams:JSON.stringify(this.detailCart)
-        }
-      });
+      this.getPro()
+      if(localStorage.username){
+        console.log(this.detailCart)
+        this.$store.dispatch('saveCartList',JSON.stringify(this.detailCart));
+        this.$router.push({
+          name:'cart',
+          query:{
+            routeParams:JSON.stringify(this.detailCart)
+          }
+        });
+      }else{
+        this.$message.info('请先登录')
+      }
     },
     getPro(){
       let pro = {}
@@ -125,7 +123,6 @@ export default{
       pro.checked=true;
       pro.quantity=1;
       this.detailCart.push(pro)
-      return pro;
     },
     getProductInfo(){
       this.axios.get('product'+ this.id +'.json').then((res)=>{

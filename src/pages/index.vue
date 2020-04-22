@@ -101,15 +101,15 @@
     <service-bar></service-bar>
     <modal 
       title="提示" 
-      sureText="查看购物车" 
-      btnType="1"
+      sureText="确定" 
+      btnType="3"
       modalType="middle"
       :showModal="showModal"
       @submit="goToCart()"
       @cancel="showModal=false"
     >
       <template v-slot:body>
-        <p>商品添加成功!</p>
+        <p>是否添加到购物车？</p>
       </template>
     </modal>
   </div>
@@ -345,17 +345,18 @@ export default{
     },
     goToCart () {
       // 此处要添加判断
-      // let path=location.hash;
-      // if (path != '/#/index'){
-      //   window.location.href = '/#/login'
-      // }
-      this.$store.dispatch('saveCartList',JSON.stringify(this.indexCart));
-      this.$router.push({
-        name:'cart',
-        query:{
-          routeParams:JSON.stringify(this.indexCart)
-        }
-      });
+      if(localStorage.username){
+        this.$store.dispatch('saveCartList',JSON.stringify(this.indexCart));
+        this.$router.push({
+          name:'cart',
+          query:{
+            routeParams:JSON.stringify(this.indexCart)
+          }
+        });
+      }else{
+        this.$message.info('请先登录')
+      }
+      
     },
     getPhoneList(){
       this.axios.get('phoneList8.json').then((res)=>{

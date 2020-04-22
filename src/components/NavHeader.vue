@@ -9,14 +9,14 @@
           <a href="javascript:;">协议规则</a>
         </div>
         <div class="top-user">
-          <a href="/#/index">首页</a>
+          <!-- <a href="/#/index">首页</a> -->
           <a href="javascript:;" v-if="username">{{username}}</a>
           <a href="javascript:;" v-if="username">我的订单</a>
           <a href="javascript:;" v-if="!username" @click="login">登录</a>
-          <a href="javascript:;" v-if="username" @click="logout">退出</a>
+          <a href="" v-if="username" @click="logout">退出</a>
           <!-- <a :href="'/#/login'" v-if="!username">登录</a> -->
-          <a href="javascript:;" v-if="!username">注册</a>
-          <a href="/#/cart" class="my-cart">
+          <a href="javascript:;" v-if="!username" @click="register">注册</a>
+          <a href="javascript:;" class="my-cart" @click="goCart">
             <span class="icon-cart"></span>
             购物车&nbsp;&nbsp;
             <span v-if="username">({{cartCount}})</span>
@@ -124,7 +124,7 @@
   </div>
 </template>
 <script>
-import {mapState} from 'vuex'
+// import {mapState} from 'vuex'
 export default{
   name:'NavHeader',
   data(){
@@ -133,25 +133,31 @@ export default{
       productList:[],
       styleObject:{
         display:'none'
-      }
+      },
+      cartCount:0
     }
   },
   computed:{
     //可解决变量延迟问题
-    /**username(){
-      return this.$store.state.username;
-    },
-    cartCount(){
-      return this.$store.state.cartCount;
-    },*/
-    ...mapState(['username','cartCount'])
+    username(){
+      // return this.$store.state.username
+      return localStorage.username;
+    }
+    
+    // ...mapState(['cartCount'])
   },
   methods:{
     login(){
-      this.$router.push('/login');
+      this.$router.push('/login');    
+      
     },
     logout(){
-      // this.$router.push('/index');
+      localStorage.username=''
+      localStorage.cartList=[]
+      // this.$router.push('/#/index');
+    },
+    register(){
+      this.$router.push('/login');
     },
     getProductList(){
       this.axios.get('product.json').then((res) => { // 只要是放在public文件夹下的json文件都可以不修改配置直接引入
@@ -161,6 +167,19 @@ export default{
           this.productList = this.data.productList;
         }
       })
+    },
+    goCart(){
+      if(this.username){
+        this.$router.push('/cart')
+      }else{
+        this.$message.info('请先登录')
+      }
+    },
+    getCartCount(){
+      let test1 = localStorage.cartList
+      if (typeof test1 == 'string') {
+        this.cartCount = JSON.parse(test1).length;
+      }
     }
   },
   filters:{
@@ -171,6 +190,7 @@ export default{
   },
   mounted(){
     this.getProductList();
+    this.getCartCount();
   }
 }
 </script>

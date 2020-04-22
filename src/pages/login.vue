@@ -56,58 +56,18 @@ export default {
   },
   methods:{
     login () {
-      this.axios.get('login.json').then((res) => {
-        let result = res.data;
-        if (result.status == 0) {
-          this.user = result.data;
-        }
-        // this.$store.dispatch('saveUserName',this.username);
-        this.saveUserName(this.username)
-        // this.$store.dispatch('saveCartCount',this.cartCount);
-      })
+      this.saveUserName(this.username)
       this.$router.push('/index');
+      window.location.reload();
+
     },
     ...mapActions(['saveUserName']), //解构 替代
     register () {
+      this.saveUserName(this.username)
       this.axios.get('register.json').then(() => {this.$message.success('注册成功')});    
       this.$router.push('/index');
     }
   }
-  // methods:{
-  //   login(){
-  //     let { username,password } = this;//ES6语法
-  //     this.axios.post('/user/login',{
-  //       username,
-  //       password
-  //     }).then((res)=>{
-  //       /**
-  //        * this.$cookie.set('userId',res.id,{expires:'1M'});
-  //        * // to-do 保存用户名
-  //        * this.$router.push('/index');
-  //        */
-  //       this.$cookie.set('userId',res.id,{expires:'Session'});
-  //       // this.$store.dispatch('saveUserName',res.username);
-  //       this.saveUserName(res.username);
-  //       this.$router.push({
-  //         name:'index',
-  //         params:{
-  //           from:'login'
-  //         }
-  //       });
-  //     })
-  //   },
-  //   ...mapActions(['saveUserName']),
-  //   register(){
-  //     this.axios.post('/user/register',{
-  //       username:'admin1',
-  //       password:'admin1',
-  //       email:'admin1@163.com'
-  //     }).then(()=>{
-  //       this.$message.success('注册成功');
-  //       // alert('注册成功')
-  //     })
-  //   }
-  // }
 }
 </script>
 <style lang="scss">
