@@ -153,6 +153,7 @@ export default{
     // 购物车下单
     order(){
       if(this.checkedNum){
+        localStorage.totalPrice=this.totalPrice;
         this.$router.push('/order/confirm');
       }
     },
@@ -181,7 +182,8 @@ export default{
   },
   mounted(){
     // this.getCartList()
-    console.log(JSON.parse(localStorage.cartList))
+    
+    // console.log(JSON.parse(localStorage.cartList))
   }
 
 }

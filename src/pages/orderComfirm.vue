@@ -26,22 +26,9 @@
             <h2 class="addr-title">收货地址</h2>
             <div class="addr-list clearfix">
               <div class="addr-info">
-                <h2>河畔一角</h2>
-                <div class="phone">176****1717</div>
-                <div class="street">北京 北京市 昌平区 回龙观<br>东大街地铁</div>
-                <div class="action">
-                  <a href="javascript:;" class="fl">
-                    <svg class="icon icon-del"><use xlink:href="#icon-del"></use></svg>
-                  </a>
-                  <a href="javascript:;" class="fr">
-                    <svg class="icon icon-edit"><use xlink:href="#icon-edit"></use></svg>
-                  </a>
-                </div>
-              </div>
-              <div class="addr-info">
-                <h2>小马哥</h2>
-                <div class="phone">176****1717</div>
-                <div class="street">北京 北京市 昌平区 回龙观<br>东大街地铁</div>
+                <h2>潘倩</h2>
+                <div class="phone">18202716913</div>
+                <div class="street">湖北省 武汉市 青山区 <br>武汉科技大学</div>
                 <div class="action">
                   <a href="javascript:;" class="fl">
                     <svg class="icon icon-del"><use xlink:href="#icon-del"></use></svg>
@@ -60,22 +47,15 @@
           <div class="item-good">
             <h2>商品</h2>
             <ul>
-              <li>
+              <li v-for="(item,index) in orderList" :key="index">
                 <div class="good-name">
-                  <img src="/imgs/item-box-3-1.png" alt="">
-                  <span>小米8 6GB 全息幻彩紫 64GB</span>
+                  <img v-lazy="item.productMainImage" alt="">
+                  <span>{{item.productName}} ({{item.subtitle}})</span>
                 </div>
-                <div class="good-price">1999元x2</div>
-                <div class="good-total">1999元</div>
+                <div class="good-price">{{item.productPrice}}元 x {{item.quantity}}</div>
+                <div class="good-total">{{item.productPrice*item.quantity}}元</div>
               </li>
-              <li>
-                <div class="good-name">
-                  <img src="/imgs/item-box-3-1.png" alt="">
-                  <span>小米8 6GB 全息幻彩紫 64GB</span>
-                </div>
-                <div class="good-price">1999元x2</div>
-                <div class="good-total">1999元</div>
-              </li>
+              
             </ul>
           </div>
           <div class="item-shipping">
@@ -90,11 +70,11 @@
           <div class="detail">
             <div class="item">
               <span class="item-name">商品件数：</span>
-              <span class="item-val">1件</span>
+              <span class="item-val">{{count}}件</span>
             </div>
             <div class="item">
               <span class="item-name">商品总价：</span>
-              <span class="item-val">2599元</span>
+              <span class="item-val">{{totalPrice}}元</span>
             </div>
             <div class="item">
               <span class="item-name">优惠活动：</span>
@@ -106,7 +86,7 @@
             </div>
             <div class="item-total">
               <span class="item-name">应付总额：</span>
-              <span class="item-val">2599元</span>
+              <span class="item-val">{{totalPrice}}元</span>
             </div>
           </div>
           <div class="btn-group">
@@ -168,6 +148,8 @@ export default{
       list:[],//收货地址列表
       orderList:[],//购物车中需要结算的商品列表
       showEditModal:false,//是否显示新增或者编辑弹框
+      totalPrice:0,  //总金额
+      count:0,  //商品总件数
     }
   },
   components:{
@@ -178,7 +160,11 @@ export default{
 
     },
     getOrderList(){
-
+      this.totalPrice = localStorage.totalPrice;//商品总金额
+      this.orderList = JSON.parse(localStorage.cartList).filter(item=>item.checked) //filter带有过滤循环功能
+      this.orderList.map((item)=>{
+        this.count += item.quantity;
+      })
     },
     // 打开新增地址弹框
     openAddressModal(){
@@ -198,7 +184,7 @@ export default{
     }
   },
   mounted(){
-
+    this.getOrderList()
   }
 }
 </script>
