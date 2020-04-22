@@ -78,6 +78,7 @@ import OrderHeader from '../components/OrderHeader'
 import ServiceBar from './../components/ServiceBar'
 import NavFooter from './../components/NavFooter'
 import Modal from './../components/Modal'
+
 export default{
   name:'cart',
   components:{
@@ -104,9 +105,6 @@ export default{
     },
     //购物车列表
     cartList(){
-      console.log(this.$store.state.cartList)
-      console.log(localStorage.cartList)
-      console.log(JSON.stringify(this.$store.state.cartList))
       localStorage.cartList=JSON.stringify(this.$store.state.cartList)
       // return JSON.parse(localStorage.cartList)
       return this.$store.state.cartList
@@ -135,24 +133,22 @@ export default{
   },
   methods:{
     editCart(type,item){  //添加
-      console.log(type)
-      console.log(item.checked)
       if(type=='add'){
         if(item.quantity == 10){
-          alert('购买不允许超过10件')
+          this.$message.warning('购买不允许超过10件')
         }else{
           item.quantity++;
         }
       }else if(type=='minus'){  //减少
         if(item.quantity == 1){
-          alert('商品至少保留一件')
+          this.$message.warning('商品至少保留一件')
+          return;
         }else{
           item.quantity--;
         }
       }else{  //是否勾选
         item.checked=!item.checked;
       }
-      console.log(item.checked)
     },
     // 购物车下单
     order(){

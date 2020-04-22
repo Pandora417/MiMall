@@ -4,6 +4,8 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueLazyLoad from 'vue-lazyload'
 import VueCookie from 'vue-cookie'
+import {Message} from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css'
 import store from './store'
 import App from './App.vue'
 // import env from './env'
@@ -31,6 +33,8 @@ import App from './App.vue'
 // })
 
 Vue.use(VueAxios,axios)
+// Vue.use(Message)
+Vue.prototype.$message = Message;
 Vue.prototype.$axios = axios
 Vue.use(VueLazyLoad,{
   loading:'/imgs/loading-svg/loading-bars.svg'

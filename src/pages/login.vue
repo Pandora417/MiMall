@@ -69,7 +69,7 @@ export default {
     },
     ...mapActions(['saveUserName']), //解构 替代
     register () {
-      this.axios.get('register.json').then(() => {alert('注册成功')});    
+      this.axios.get('register.json').then(() => {this.$message.success('注册成功')});    
       this.$router.push('/index');
     }
   }
