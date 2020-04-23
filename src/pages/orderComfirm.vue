@@ -25,16 +25,23 @@
           <div class="item-address">
             <h2 class="addr-title">收货地址</h2>
             <div class="addr-list clearfix">
-              <div class="addr-info">
-                <h2>潘倩</h2>
-                <div class="phone">18202716913</div>
-                <div class="street">湖北省 武汉市 青山区 <br>武汉科技大学</div>
+              <div 
+                class="addr-info" 
+                v-for="(item,index) in addressList" 
+                :key="index"
+                :class="{'checked':index == checkIndex}"
+                @click="checkIndex=index"
+              >
+                <h2>{{item.name}}</h2>
+                <div class="phone">{{item.phone}}</div>
+                <div class="street">{{item.province}} {{item.city}} {{item.district}} <br>{{item.address}}</div>
+                <div class="postcode">{{item.postcode}}</div>
                 <div class="action">
                   <a href="javascript:;" class="fl">
-                    <svg class="icon icon-del"><use xlink:href="#icon-del"></use></svg>
+                    <!-- <svg class="icon icon-edit"><use xlink:href="#icon-edit"></use></svg> -->
                   </a>
-                  <a href="javascript:;" class="fr">
-                    <svg class="icon icon-edit"><use xlink:href="#icon-edit"></use></svg>
+                  <a href="javascript:;" class="fr" @click="delConfirm(item)">
+                    <svg class="icon icon-del"><use xlink:href="#icon-del"></use></svg>
                   </a>
                 </div>
               </div>
@@ -97,29 +104,41 @@
       </div>
     </div>
     <modal
+      title="提示"
+      btnType="1"
+      :showModal="showDelModal"
+      @submit="delAddress()"
+      @cancel="showDelModal=false"
+    >
+      <template v-slot:body>
+        <p>是否删除？</p>
+      </template>
+    </modal>
+    <modal
       title="新增确认"
       btnType="1"
       :showModal="showEditModal"
+      @submit="addAddress()"
       @cancel="showEditModal=false"
     >
       <template v-slot:body>
         <div class="edit-wrap">
           <div class="item">
-            <input type="text" class="input" placeholder="姓名">
-            <input type="text" class="input" placeholder="手机号">
+            <input type="text" class="input" placeholder="姓名" v-model="addItem.name">
+            <input type="text" class="input" placeholder="手机号" v-model="addItem.phone">
           </div>
           <div class="item">
-            <select name="province">
+            <select name="province" v-model="addItem.province">
               <option value="北京">北京</option>
               <option value="天津">天津</option>
               <option value="河北">河北</option>
             </select>
-            <select name="city">
+            <select name="city" v-model="addItem.city">
               <option value="北京">北京</option>
               <option value="天津">天津</option>
               <option value="河北">石家庄</option>
             </select>
-            <select name="district">
+            <select name="district" v-model="addItem.district">
               <option value="北京">昌平区</option>
               <option value="天津">海淀区</option>
               <option value="河北">东城区</option>
@@ -129,10 +148,10 @@
             </select>
           </div>
           <div class="item">
-            <textarea name="street"></textarea>
+            <input type="text" class="input detail" placeholder="详细地址" v-model="addItem.address">
           </div>
           <div class="item">
-            <input type="text" class="input" placeholder="邮编">
+            <input type="text" class="input detail" placeholder="邮政编号" v-model="addItem.postcode">
           </div>
         </div>
       </template>
@@ -145,20 +164,36 @@ export default{
   name:'order-confirm',
   data(){
     return {
-      list:[],//收货地址列表
+      // addressList:[],//收货地址列表
       orderList:[],//购物车中需要结算的商品列表
-      showEditModal:false,//是否显示新增或者编辑弹框
+      showDelModal:false, //是否显示确认删除弹框
+      showEditModal:false,//是否显示新增弹框
       totalPrice:0,  //总金额
       count:0,  //商品总件数
+      delItem:{},  //删除item地址
+      addItem:{},  //新增item地址
+      checkIndex:0  //默认地址为第一项
+    }
+  },
+  computed:{
+    addressList(){
+      localStorage.addressList=JSON.stringify(this.$store.state.addressList)
+      return this.$store.state.addressList;
     }
   },
   components:{
     Modal
   },
   methods:{
+    //获取默认地址列表
     getAddressList(){
-
+      this.$axios.get('address.json').then((res)=>{
+        this.addressList.push(res.data)
+        this.$store.dispatch('saveAddressList',JSON.stringify(this.addressList));
+        console.log(this.addressList)
+      })
     },
+    //获取默认订单列表
     getOrderList(){
       this.totalPrice = localStorage.totalPrice;//商品总金额
       this.orderList = JSON.parse(localStorage.cartList).filter(item=>item.checked) //filter带有过滤循环功能
@@ -166,15 +201,44 @@ export default{
         this.count += item.quantity;
       })
     },
+    //是否确认删除
+    delConfirm(item){
+      this.showDelModal=true;
+      this.delItem = item;
+    },
+    //删除地址
+    delAddress(){
+      let delItem = this.delItem
+      // console.log(delItem)
+      this.addressList.forEach((item,index)=>{
+        if (delItem.name == item.name){
+          this.addressList.splice(index,1);
+          this.showDelModal=false;
+        }
+      })
+      this.$message.success('删除地址成功');
+    },
+    //添加地址
+    addAddress(){
+      console.log(this.addItem);
+      this.addressList.push(this.addItem)
+      console.log(this.addressList)
+      this.showEditModal=false;
+      // localStorage.addressList = JSON.stringify(this.addressList);
+    },
+   
     // 打开新增地址弹框
     openAddressModal(){
+      this.addItem = {};
       this.showEditModal = true;
-    },
-    closeModal(){
-      this.showEditModal = false;
     },
     // 订单提交
     orderSubmit(){
+      let item = this.addressList[this.checkIndex];
+      if(!item){
+        this.$message.error('请选择一个收货地址');
+        return;
+      }
       this.$router.push({
         path:'/order/pay',
         query:{
@@ -184,6 +248,7 @@ export default{
     }
   },
   mounted(){
+    // this.getAddressList()
     this.getOrderList()
   }
 }
@@ -231,8 +296,8 @@ export default{
                 height:50px;
               }
               .action{
-                height:50px;
-                line-height:50px;
+                height:40px;
+                line-height:40px;
                 .icon{
                   width: 20px;
                   height: 20px;
@@ -360,9 +425,10 @@ export default{
           height:40px;
           line-height:40px;
           border:1px solid #E5E5E5;
-          margin-right:15px;
+          margin-right: 30px;
+          padding: 10px;
         }
-        textarea{
+        .detail{
           height:62px;
           width:100%;
           padding:13px 15px;

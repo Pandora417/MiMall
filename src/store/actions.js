@@ -12,5 +12,8 @@ export default{
   },
   saveCartList(context,pro){
     context.commit('saveCartList',pro)
+  },
+  saveAddressList(context,addressList){
+    context.commit('saveAddressList',addressList)
   }
 }

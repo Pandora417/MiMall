@@ -8,25 +8,34 @@ Vue.use(Vuex)
 //为了刷新后数据依旧还是缓存的数据
 let defaultName = '';
 let defaultCartList = [];
+let defaultAddressList = [];
 try {
   if (localStorage.username) {
     defaultName = localStorage.username
   }
 } catch (e) {
-  alert("请重新输入")
+  alert("该浏览器不支持localStorage")
 }
 try {
   if (localStorage.cartList) {
     defaultCartList = JSON.parse(localStorage.cartList)
   }
 } catch (e) {
-  alert("请重新输入")
+  alert("该浏览器不支持localStorage")
+}
+try {
+  if (localStorage.addressList) {
+    defaultAddressList = JSON.parse(localStorage.addressList)
+  }
+} catch (e) {
+  alert("该浏览器不支持localStorage")
 }
 
 const state={
   username:defaultName, //登录用户名
   cartCount:0,  //购物车数量
-  cartList:defaultCartList
+  cartList:defaultCartList, //购物车列表
+  addressList:defaultAddressList  //地址列表
 }
 
 export default new Vuex.Store({

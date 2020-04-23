@@ -30,5 +30,16 @@ export default{
       state.cartList=state.cartList.concat(JSON.parse(pro))
       localStorage.cartList = JSON.stringify(state.cartList)
     }
+  },
+  saveAddressList(state,addressList){
+    if(localStorage.cartList){
+      // localStorage.cartList=JSON.stringify(JSON.parse(localStorage.cartList).concat(JSON.parse(pro)))
+      // state.cartList=JSON.parse(localStorage.cartList)
+      state.addressList=JSON.parse(localStorage.addressList).concat(JSON.parse(addressList))
+      localStorage.addressList=JSON.stringify(state.addressList)
+    }else{
+      state.addressList=state.addressList.concat(JSON.parse(addressList))
+      localStorage.addressList = JSON.stringify(state.addressList)
+    }
   }
 }
