@@ -11,7 +11,7 @@
         <div class="top-user">
           <!-- <a href="/#/index">首页</a> -->
           <a href="javascript:;" v-if="username">{{username}}</a>
-          <a href="javascript:;" v-if="username">我的订单</a>
+          <a href="/#/order/list" v-if="username">我的订单</a>
           <a href="javascript:;" v-if="!username" @click="login">登录</a>
           <a href="" v-if="username" @click="logout">退出</a>
           <!-- <a :href="'/#/login'" v-if="!username">登录</a> -->
@@ -55,7 +55,7 @@
             <div class="children">
               <ul>
                 <li class="product">
-                  <a href="" target="_blank">
+                  <a href="javascript:;">
                     <div class="pro-img">
                       <img v-lazy="'/imgs/nav-img/nav-3-1.jpg'">
                     </div>

@@ -12,7 +12,7 @@
       </div>
       <div class="username">
         <a href="javascript:;">{{username}}</a>
-        <a href="javascript:;">我的订单</a>
+        <!-- <a href="javascript:;">我的订单</a> -->
         <!-- <a href="javascript:;">Pandora</a> -->
       </div>
     </div>

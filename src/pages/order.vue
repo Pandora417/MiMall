@@ -40,6 +40,9 @@ export default{
       this.title = '订单支付'
       this.tip = '请谨防钓鱼链接或诈骗电话';
       //alipay 是个空页面
+    }else if(path=='/order/alipay'){
+      this.title = '支付宝支付'
+      this.tip = '请谨防钓鱼链接或诈骗电话';
     }
   }
 }

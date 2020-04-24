@@ -43,9 +43,18 @@
         <div class="item-pay">
           <h3>选择以下支付方式付款</h3>
           <div class="pay-way">
-            <p>支付平台</p>
-            <div class="pay pay-ali" :class="{'checked':payType==1}" @click="payType=1"></div>
-            <div class="pay pay-wechat" :class="{'checked':payType==2}" @click="payType=2"></div>
+            <div class="pay-list">
+              <p>支付平台</p>
+              <a href="/#/order/list" class="toList">支付成功后，点击查看我的订单</a>
+            </div>
+            <div class="pay">
+              <div class="pay-ali"></div>
+              <div class="ali"></div>
+            </div>
+            <div class="pay">
+              <div class="pay-wechat"></div>
+              <div class="wechat"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -64,7 +73,7 @@ export default{
       showDetail:false,//是否显示订单详情
       showPay:false,//是否显示微信支付弹框
       orderDetail:{},  //地址详情
-      payType:1,  //默认是支付宝支付
+      // payType:1,  //默认是支付宝支付
       orderList:[]//商品详情
     }
   },
@@ -98,9 +107,16 @@ export default{
       this.orderDetail = JSON.parse(localStorage.addressList)[0]
       console.log (this.orderDetail);
       this.orderList = JSON.parse(localStorage.orderList)
+      // this.orderNo = localStorage.orderNo
       console.log (this.orderList);
       // this.orderDetail.phone=addr.phone;
     }
+    // paySubmit(payType){
+    //   if(payType==1){
+    //     console.log(this.orderNo)
+    //     window.open('/#/order/alipay?orderNo='+this.orderNo,'_blank')
+    //   }
+    // }
   },
   mounted(){
     this.getOrderDetail()
@@ -108,6 +124,7 @@ export default{
 }
 </script>
 <style lang="scss">
+  @import '../assets/scss/mixin';
   .order-pay{
     .wrapper{
       background-color:#F5F5F5;
@@ -200,6 +217,7 @@ export default{
         padding:26px 50px 72px;
         background-color:#ffffff;
         color: #333333;
+        height: 450px;
         h3{
           font-size: 20px;
           font-weight: 200;
@@ -210,30 +228,62 @@ export default{
         }
         .pay-way{
           font-size:18px;
+          .pay-list{
+            display: flex;
+            justify-content: space-between;
+            p{
+              margin: 10px 0;
+            }
+            .toList{
+              background: #ff6600;
+              height: 50px;
+              width: 270px;
+              float: right;
+              color: #fff;
+              text-align: center;
+              line-height: 50px;
+              border-radius: 10px;
+            }
+          }
           .pay{
-            display:inline-block;
-            width:188px;
-            height:64px;
-            border:1px solid #D7D7D7;
-            cursor:pointer;
+            display: block;
+            width: 500px;
+            height: 580px;
+            // border: 1px solid #D7D7D7;
+            float: left;
+            cursor: pointer;
+            box-sizing: border-box;
             &:last-child{
               margin-left:20px;
             }
             &.checked{
               border:1px solid #FF6700;
             }
+            .pay-ali{
+              @include bgImg(120px,60px,'/imgs/pay/icon-ali.png',contain);
+              margin: 0 190px;
+            }
+            .ali{
+              @include bgImg(240px,270px,'/imgs/pay/alipay.png',contain);
+              margin: 0 130px;
+            }
+            .pay-wechat{
+              @include bgImg(120px,60px,'/imgs/pay/icon-wechat.png',contain);
+              margin: 0 190px;
+            }
+            .wechat{
+              @include bgImg(240px,270px,'/imgs/pay/wechat.png',contain);
+              margin: 0 130px;
+            }
           }
-          .pay-ali{
-            background:url('/imgs/pay/icon-ali.png') no-repeat center;
-            background-size:103px 38px;
-            margin-top:19px;
-          }
-          .pay-wechat{
-            background:url('/imgs/pay/icon-wechat.png') no-repeat center;
-            background-size:103px 38px;
-          }
+          
         }
       }
+    }
+  }
+  .service{
+    .container{
+      height: 100px;
     }
   }
 </style>

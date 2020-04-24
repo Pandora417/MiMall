@@ -172,7 +172,8 @@ export default{
       count:0,  //商品总件数
       delItem:{},  //删除item地址
       addItem:{},  //新增item地址
-      checkIndex:0  //默认地址为第一项
+      checkIndex:0,  //默认地址为第一项
+      orderNum:201621177059
     }
   },
   computed:{
@@ -233,6 +234,23 @@ export default{
       this.addItem = {};
       this.showEditModal = true;
     },
+    getDate() {
+      var date = new Date();
+      var month = date.getMonth() + 1;
+      var strDate = date.getDate();
+      if (month >= 1 && month <= 9) {
+          month = "0" + month;
+      }
+      if (strDate >= 0 && strDate <= 9) {
+          strDate = "0" + strDate;
+      }
+      var currentdate = date.getFullYear() + month + strDate
+               + date.getHours() + date.getMinutes()
+              + date.getSeconds();
+      this.orderNum = currentdate;
+      localStorage.orderNum = this.orderNum;
+      // console.log(this.orderNum)
+    },
     // 订单提交
     orderSubmit(){
       let item = this.addressList[this.checkIndex];
@@ -240,17 +258,19 @@ export default{
         this.$message.error('请选择一个收货地址');
         return;
       }
+      this.getDate()
       this.$router.push({
         path:'/order/pay',
         query:{
-          orderNo:123
+          orderNo:this.orderNum
         }
       })
     }
   },
   mounted(){
     // this.getAddressList()
-    this.getOrderList()
+    this.getOrderList();
+    this.getDate()
   }
 }
 </script>
