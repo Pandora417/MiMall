@@ -197,6 +197,7 @@ export default{
     getOrderList(){
       this.totalPrice = localStorage.totalPrice;//商品总金额
       this.orderList = JSON.parse(localStorage.cartList).filter(item=>item.checked) //filter带有过滤循环功能
+      localStorage.orderList = JSON.stringify(this.orderList);
       this.orderList.map((item)=>{
         this.count += item.quantity;
       })
