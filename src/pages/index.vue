@@ -413,7 +413,7 @@ export default{
             }
           }
           &:hover{
-            background-color: #ff6600;
+            background-color: $colorA;
             .children{
               display: block;
             }
@@ -425,8 +425,8 @@ export default{
             left:264px;
             width: 962px;
             height: 451px;
-            background: #ffffff;
-            border: 1px solid #e5e5e5;
+            background: $colorG;
+            border: 1px solid $colorH;
             ul{
               display: flex;
               justify-content: space-between;
@@ -438,7 +438,7 @@ export default{
                 flex: 1;
                 padding-left: 23px;
                 a{
-                  color:#333333;
+                  color:$colorB;
                   font-size: 14px;
                   img{
                     width: 42px;
@@ -496,7 +496,7 @@ export default{
             .item{
               width: 236px;
               height: 302px;
-              background:#ffffff;
+              background:$colorG;
               text-align: center;
               span{
                 top: 10px;
@@ -514,7 +514,7 @@ export default{
               }
               .item-info{
                 h3{
-                  color:#333333;
+                  color:$colorB;
                   font-size: 14px;
                   line-height: 14px;
                   font-weight: bold;
@@ -525,7 +525,7 @@ export default{
                   margin: 10px;
                 }
                 .price{
-                  color: #ff6600;
+                  color: $colorA;
                   font-size: 14px;
                   font-weight: bold;
                   cursor: pointer;

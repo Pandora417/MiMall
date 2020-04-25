@@ -34,9 +34,10 @@ export default{
 }
 </script>
 <style lang="scss">
+  @import '../assets/scss/config';
   .order-header{
     padding:30px 0;
-    border-bottom:2px solid #FF6600;
+    border-bottom:2px solid $colorA;
     .header-logo{
       float:left;
     }
@@ -50,7 +51,7 @@ export default{
       margin-left:54px;
       h2{
         font-size:28px;
-        color:#333333;
+        color:$colorB;
       }
       span{
         font-size:14px;
@@ -62,7 +63,7 @@ export default{
     .username{
       float:right;
       a{
-        color:#666666;
+        color:$colorC;
         font-size:16px;
         margin-left: 30px;
       }

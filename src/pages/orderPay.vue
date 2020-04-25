@@ -105,11 +105,7 @@ export default{
     },
     getOrderDetail(){
       this.orderDetail = JSON.parse(localStorage.addressList)[0]
-      console.log (this.orderDetail);
       this.orderList = JSON.parse(localStorage.orderList)
-      // this.orderNo = localStorage.orderNo
-      console.log (this.orderList);
-      // this.orderDetail.phone=addr.phone;
     }
     // paySubmit(payType){
     //   if(payType==1){
@@ -125,6 +121,7 @@ export default{
 </script>
 <style lang="scss">
   @import '../assets/scss/mixin';
+  @import '../assets/scss/config';
   .order-pay{
     .wrapper{
       background-color:#F5F5F5;
@@ -150,11 +147,11 @@ export default{
             margin-right: 248px;
             h2{
               font-size:24px;
-              color:#333333;
+              color:$colorB;
               margin-bottom:20px;
             }
             p{
-              color:#666666;    
+              color:$colorC;    
               margin: 10px 0;
               font-size: 16px;
               span{
@@ -215,13 +212,13 @@ export default{
       }
       .item-pay{
         padding:26px 50px 72px;
-        background-color:#ffffff;
-        color: #333333;
+        background-color:$colorG;
+        color: $colorB;
         height: 450px;
         h3{
           font-size: 20px;
           font-weight: 200;
-          color: #333333;
+          color: $colorB;
           padding-bottom: 24px;
           border-bottom: 1px solid #D7D7D7;
           margin-bottom: 26px;
@@ -235,7 +232,7 @@ export default{
               margin: 10px 0;
             }
             .toList{
-              background: #ff6600;
+              background: $colorA;
               height: 50px;
               width: 270px;
               float: right;

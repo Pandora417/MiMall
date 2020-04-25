@@ -199,7 +199,7 @@ export default{
       this.$axios.get('address.json').then((res)=>{
         this.addressList.push(res.data)
         this.$store.dispatch('saveAddressList',JSON.stringify(this.addressList));
-        console.log(this.addressList)
+        // console.log(this.addressList)
       })
     },
     //获取默认订单列表
@@ -233,7 +233,7 @@ export default{
     },
     //添加地址
     addAddress(){
-      console.log(this.addItem);
+      // console.log(this.addItem);
       // this.onSubmit()
       if(this.addItem.name == undefined){
         this.$message.error('请填写姓名')
@@ -256,7 +256,7 @@ export default{
       }
       this.addressList.push(this.addItem)
       this.addItem = {}
-      console.log(this.addItem)
+      // console.log(this.addItem)
       this.showEditModal=false;
     },
     //获取绑定的省市区信息
@@ -316,18 +316,19 @@ export default{
 }
 </script>
 <style lang="scss">
+  @import '../assets/scss/config';
   .order-confirm{
     .wrapper{
       background-color:#F5F5F5;
       padding-top:30px;
       padding-bottom:84px;
       .order-box{
-        background-color:#ffffff;
+        background-color:$colorG;
         padding-left: 40px;
         padding-bottom: 40px;
         .addr-title{
           font-size: 20px;
-          color: #333333;
+          color: $colorB;
           font-weight: 200;
           margin-bottom:21px;
         }
@@ -339,7 +340,7 @@ export default{
               float: left;
               width:271px;
               height:180px;
-              border:1px solid #E5E5E5;
+              border:1px solid $colorH;
               margin-right: 15px;
               padding: 15px 24px;
               font-size: 14px;
@@ -363,7 +364,7 @@ export default{
                 .icon{
                   width: 20px;
                   height: 20px;
-                  fill: #666666;
+                  fill: $colorC;
                   vertical-align: middle;
                   &:hover{
                     fill: #FF6700;
@@ -393,10 +394,10 @@ export default{
         }
         .item-good{
           margin-top:34px;
-          border-bottom: 1px solid #E5E5E5;
+          border-bottom: 1px solid $colorH;
           padding-bottom: 12px;
           h2{
-            border-bottom:1px solid #E5E5E5;
+            border-bottom:1px solid $colorH;
             padding-bottom: 5px;
           }
           li{
@@ -406,7 +407,7 @@ export default{
             line-height:40px;
             margin-top:10px;
             font-size:16px;
-            color:#333333;
+            color:$colorB;
             .good-name{
               flex:5;
               img{
@@ -420,7 +421,7 @@ export default{
             }
             .good-total{
               padding-right:44px;
-              color:#FF6600;
+              color:$colorA;
             }
           }
         }
@@ -444,7 +445,7 @@ export default{
           border-bottom: 1px solid #f5f5f5;
           text-align: right;
           font-size: 16px;
-          color: #666666;
+          color: $colorC;
           .item-val{
             color:#FF6700;
           }
@@ -478,7 +479,7 @@ export default{
           height:40px;
           line-height:40px;
           padding-left:15px;
-          border:1px solid #E5E5E5;
+          border:1px solid $colorH;
           &+.input{
             margin-left:14px;
           }
@@ -486,7 +487,7 @@ export default{
         select{
           height:40px;
           line-height:40px;
-          border:1px solid #E5E5E5;
+          border:1px solid $colorH;
           margin-right: 30px;
           padding: 10px;
         }
@@ -495,7 +496,7 @@ export default{
           width:100%;
           padding:13px 15px;
           box-sizing:border-box;
-          border:1px solid #E5E5E5;
+          border:1px solid $colorH;
         }
       }
     }

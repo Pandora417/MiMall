@@ -101,7 +101,7 @@ export default{
     addCart(){
       this.getPro()
       if(localStorage.username){
-        console.log(this.detailCart)
+        // console.log(this.detailCart)
         this.$store.dispatch('saveCartList',JSON.stringify(this.detailCart));
         this.$router.push({
           name:'cart',
@@ -187,12 +187,12 @@ export default{
           height:0;
           margin-top:25px;
           margin-bottom:28px;
-          border-top:1px solid #E5E5E5;
+          border-top:1px solid $colorH;
         }
         .item-addr{
           height:108px;
           background-color:#FAFAFA;
-          border:1px solid #E5E5E5;
+          border:1px solid $colorH;
           box-sizing:border-box;
           padding-top:31px;
           padding-left:64px;
@@ -206,7 +206,7 @@ export default{
             @include bgImg(20px,20px,'/imgs/detail/icon-loc.png');
           }
           .addr{
-            color:#666666;
+            color:$colorC;
           }
           .stock{
             margin-top:15px;
@@ -226,24 +226,24 @@ export default{
             height:50px;
             line-height:50px;
             font-size:16px;
-            color:#333333;
-            border:1px solid #E5E5E5;
+            color:$colorB;
+            border:1px solid $colorH;
             box-sizing: border-box;
             text-align:center;
             cursor:pointer;
             span{
-              color:#666666;
+              color:$colorC;
               margin-left:15px;
             }
             .color{
               display:inline-block;
               width:14px;
               height:14px;
-              background-color:#666666;
+              background-color:$colorC;
             }
             &.checked{
-              border:1px solid #FF6600;
-              color:#FF6600;
+              border:1px solid $colorA;
+              color:$colorA;
             }
           }
         }
@@ -257,7 +257,7 @@ export default{
           box-sizing: border-box;
           .phone-total{
             font-size: 24px;
-            color: #FF6600;
+            color: $colorA;
             margin-top: 18px;
           }
         }
@@ -268,7 +268,7 @@ export default{
       height:340px;
       h2{
         font-size:24px;
-        color:#333333;
+        color:$colorB;
         padding-top:38px;
         margin-bottom:30px;
       }

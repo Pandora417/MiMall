@@ -43,6 +43,7 @@
             </div>
           </div>
         </div>
+        <div class="reback-index"><button class="btn" @click="rebackIndex">返回首页</button></div>
       </div>
     </div>
   </div>
@@ -69,7 +70,12 @@
     },
     methods:{
       getOrderList(){
-
+        this.orderNo = localStorage.orderNum
+        this.addName = JSON.parse(localStorage.addressList)[0].name
+        this.orderList = JSON.parse(localStorage.orderList)
+      },
+      rebackIndex(){
+        this.$router.push('/#/index')
       },
       getTime(){
         var date = new Date();
@@ -103,20 +109,19 @@
     },
     mounted(){
       this.getTime()
-      this.orderNo = localStorage.orderNum
-      this.addName = JSON.parse(localStorage.addressList)[0].name
-      this.orderList = JSON.parse(localStorage.orderList)
+      this.getOrderList()
     }
   }
 </script>
 <style lang="scss">
   @import './../assets/scss/config.scss';
   @import './../assets/scss/mixin.scss';
+  @import './../assets/scss/button.scss';
   .order-list{
     .wrapper{
       background-color:$colorJ;
       padding-top:33px;
-      padding-bottom:110px;
+      padding-bottom:50px;
       .order-box{
         .order{
           @include border();
@@ -176,16 +181,27 @@
           text-align:right;
         }
         .el-pagination.is-background .el-pager li:not(.disabled).active{
-          background-color: #FF6600;
+          background-color: $colorA;
         }
         .el-button--primary{
-          background-color: #FF6600;
-          border-color: #FF6600;
+          background-color: $colorA;
+          border-color: $colorA;
         }
         .load-more,.scroll-more{
           text-align:center;
         }
       }
+      .reback-index{      
+        width: 100%;
+        height: 60px;
+        margin-top: 40px;
+        .btn{
+          float: right;
+          height: 50px;
+          border-radius: 10px;
+        }
+      }
     }
+    
   }
 </style>

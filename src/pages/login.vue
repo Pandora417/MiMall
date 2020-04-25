@@ -71,6 +71,7 @@ export default {
 }
 </script>
 <style lang="scss">
+@import '../assets/scss/config';
 .login{
   &>.container{
     height:113px;
@@ -89,7 +90,7 @@ export default {
         padding-right: 31px;
         width:410px;
         height:510px;
-        background-color:#ffffff;
+        background-color:$colorG;
         position:absolute;
         bottom:29px;
         right:0;
@@ -99,7 +100,7 @@ export default {
           text-align:center;
           margin:40px auto 49px;
           .checked{
-            color:#FF6600;
+            color:$colorA;
           }
           .sep-line{
             margin:0 32px;
@@ -109,7 +110,7 @@ export default {
           display:inline-block;
           width:348px;
           height:50px;
-          border:1px solid #E5E5E5;
+          border:1px solid $colorH;
           margin-bottom:20px;
           input{
             width: 100%;
@@ -131,7 +132,7 @@ export default {
           font-size:14px;
           cursor:pointer;
           .sms{
-            color:#FF6600;
+            color:$colorA;
           }
           .reg{
             color:#999999;

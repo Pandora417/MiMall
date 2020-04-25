@@ -262,7 +262,7 @@ export default{
               opacity:0;
               overflow:hidden;
               z-index: 10;
-              background-color: #ffffff;
+              background-color: $colorG;
               transition:all .5s;
               border-top: 1px solid $colorH;
               box-shadow: 0px 7px 6px 0px rgba(0, 0, 0, 0.11);

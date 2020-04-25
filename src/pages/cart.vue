@@ -181,14 +181,13 @@ export default{
     }
   },
   mounted(){
-    // this.getCartList()
-    
-    // console.log(JSON.parse(localStorage.cartList))
+
   }
 
 }
 </script>
 <style lang="scss">
+  @import '../assets/scss/config';
   .cart{
     .wrapper{
       background-color:#F5F5F5;
@@ -203,12 +202,12 @@ export default{
           display: inline-block;
           width: 22px;
           height: 22px;
-          border: 1px solid #E5E5E5;
+          border: 1px solid $colorH;
           vertical-align: middle;
           margin-right: 17px;
           cursor:pointer;
           &.checked{
-            background:url('/imgs/icon-gou.png') #FF6600 no-repeat center;
+            background:url('/imgs/icon-gou.png') $colorA no-repeat center;
             background-size:16px 12px;
             border:none;
           }
@@ -232,7 +231,7 @@ export default{
             display:flex;
             align-items:center;
             height:125px;
-            border-top:1px solid #E5E5E5;
+            border-top:1px solid $colorH;
             font-size:16px;
             .item-check{
               flex:1;
@@ -240,7 +239,7 @@ export default{
             .item-name{
               flex:3;
               font-size: 18px;
-              color: #333333;
+              color: $colorB;
               display: flex;
               align-items: center;
               img{
@@ -256,7 +255,7 @@ export default{
             }
             .item-price{
               flex:1;
-              color:#333333;
+              color:$colorB;
             }
             .item-num{
               flex:2;
@@ -265,23 +264,23 @@ export default{
                 width:150px;
                 height:40px;
                 line-height:40px;
-                border:1px solid #E5E5E5;
+                border:1px solid $colorH;
                 font-size:14px;
                 a{
                   display:inline-block;
                   width:50px;
-                  color:#333333;
+                  color:$colorB;
                 }
                 span{
                   display:inline-block;
                   width:50px;
-                  color:#333333;
+                  color:$colorB;
                 }
               }
             }
             .item-total{
               flex:1;
-              color:#FF6600;
+              color:$colorA;
             }
             .item-del{
               flex:1;
@@ -296,24 +295,24 @@ export default{
       }
       .order-wrap{
         font-size:14px;
-        color: #666666;
+        color: $colorC;
         margin-top: 20px;
         height: 50px;
         line-height: 50px;
         .cart-tip{
           margin-left: 29px;
           a{
-            color: #666666;
+            color: $colorC;
             margin-right:37px;
           }
           span{
-            color:#FF6600;
+            color:$colorA;
             margin:0 5px;
           }
         }
         .total{
           font-size:14px;
-          color:#FF6600;
+          color:$colorA;
           span{
             font-size:24px;
           }

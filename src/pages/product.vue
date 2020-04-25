@@ -106,6 +106,7 @@ export default{
 <style scoped lang="scss">
   @import './../assets/scss/mixin.scss';
   @import './../assets/scss/base.scss';
+  @import './../assets/scss/config.scss';
   .product{
     .content{
       .item-bg{
@@ -125,7 +126,7 @@ export default{
           margin-bottom:40px;
           a{
             font-size:16px;
-            color:#333333;
+            color:$colorB;
           }
           span{
             margin:0 15px;
@@ -133,7 +134,7 @@ export default{
         }
         .price{
           font-size:30px;
-          color:#333333;
+          color:$colorB;
           em{
             font-style:normal;
             font-size:38px;
@@ -154,7 +155,7 @@ export default{
         margin:36px auto 52px;
         .desc{
           font-size:18px;
-          color:#333333;
+          color:$colorB;
           text-align:center;
         }
         img{
@@ -165,7 +166,7 @@ export default{
         height:1044px;
         background-color:#070708;
         margin-bottom:76px;
-        color:#FFFFFF;
+        color:$colorG;
         text-align:center;
         h2{
           font-size:60px;
@@ -187,7 +188,7 @@ export default{
         .video-box{
           .overlay{
             @include position(fixed);
-            background-color:#333333;
+            background-color:$colorB;
             opacity:.4;
             z-index:10;
           }

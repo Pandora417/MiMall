@@ -17,16 +17,17 @@ export default{
 </script>
 <style lang="scss" scoped>
   @import './../assets/scss/mixin';
+  @import './../assets/scss/config';
 
   .service{
     padding: 33px 0;
-    color: #666666;
+    color: $colorC;
     font-size: 16px;
     li{
       display: inline-block;
       width: 24.9%;
       text-align: center;
-      border-right: 1px solid #e5e5e5;
+      border-right: 1px solid $colorH;
       span{
         display: inline-block;
         width: 20px;
