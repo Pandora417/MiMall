@@ -6,8 +6,12 @@ import VueLazyLoad from 'vue-lazyload'
 import VueCookie from 'vue-cookie'
 import {Message} from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css'
+import Distpicker from 'v-distpicker'
 import store from './store'
 import App from './App.vue'
+
+
+
 // import env from './env'
 
 //mock开关
@@ -35,6 +39,7 @@ import App from './App.vue'
 Vue.use(VueAxios,axios)
 // Vue.use(Message)
 Vue.prototype.$message = Message;
+Vue.component('v-distpicker', Distpicker)
 Vue.prototype.$axios = axios
 Vue.use(VueLazyLoad,{
   loading:'/imgs/loading-svg/loading-bars.svg'

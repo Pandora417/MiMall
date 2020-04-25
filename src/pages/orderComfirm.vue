@@ -34,7 +34,7 @@
               >
                 <h2>{{item.name}}</h2>
                 <div class="phone">{{item.phone}}</div>
-                <div class="street">{{item.province}} {{item.city}} {{item.district}} <br>{{item.address}}</div>
+                <div class="street">{{item.province}} {{item.city}} {{item.area}} <br>{{item.address}}</div>
                 <div class="postcode">{{item.postcode}}</div>
                 <div class="action">
                   <a href="javascript:;" class="fl">
@@ -128,7 +128,13 @@
             <input type="text" class="input" placeholder="手机号" v-model="addItem.phone">
           </div>
           <div class="item">
-            <select name="province" v-model="addItem.province">
+            <v-distpicker 
+              @province="onChangeProvince"
+              @city="onChangeCity"
+              @area="onChangeArea"
+            >
+            </v-distpicker>
+            <!-- <select name="province" v-model="addItem.province">
               <option value="北京">北京</option>
               <option value="天津">天津</option>
               <option value="河北">河北</option>
@@ -145,7 +151,7 @@
               <option value="天津">西城区</option>
               <option value="河北">顺义区</option>
               <option value="天津">房山区</option>
-            </select>
+            </select> -->
           </div>
           <div class="item">
             <input type="text" class="input detail" placeholder="详细地址" v-model="addItem.address">
@@ -160,8 +166,13 @@
 </template>
 <script>
 import Modal from './../components/Modal'
+import VDistpicker from 'v-distpicker'
 export default{
   name:'order-confirm',
+  components:{
+    Modal,
+    VDistpicker 
+  },
   data(){
     return {
       // addressList:[],//收货地址列表
@@ -181,9 +192,6 @@ export default{
       localStorage.addressList=JSON.stringify(this.$store.state.addressList)
       return this.$store.state.addressList;
     }
-  },
-  components:{
-    Modal
   },
   methods:{
     //获取默认地址列表
@@ -220,15 +228,48 @@ export default{
       })
       this.$message.success('删除地址成功');
     },
+    onSubmit(){
+      
+    },
     //添加地址
     addAddress(){
       console.log(this.addItem);
+      // this.onSubmit()
+      if(this.addItem.name == undefined){
+        this.$message.error('请填写姓名')
+        return
+      }
+      if(this.addItem.phone == undefined){
+        this.$message.error('请填写手机号码')
+        return
+      }else if(!(/^1[34578]\d{9}$/.test(this.addItem.phone))){
+        this.$message.error('手机号码格式错误')
+        return
+      }
+      if(this.addItem.province == undefined || this.addItem.city == undefined || this.addItem.area == undefined){
+        this.$message.error('请将地区信息填写完整')
+        return;
+      }
+      if(this.addItem.address == undefined){
+        this.$message.error('请填写具体地址')
+        return
+      }
       this.addressList.push(this.addItem)
-      console.log(this.addressList)
+      this.addItem = {}
+      console.log(this.addItem)
       this.showEditModal=false;
-      // localStorage.addressList = JSON.stringify(this.addressList);
     },
-   
+    //获取绑定的省市区信息
+    onChangeProvince(data) {
+      this.addItem.province = data.value
+    },
+    onChangeCity(data){
+      this.addItem.city = data.value
+    },
+    onChangeArea(data){
+      this.addItem.area = data.value
+      this.addItem.postcode = data.code
+    },
     // 打开新增地址弹框
     openAddressModal(){
       this.addItem = {};
