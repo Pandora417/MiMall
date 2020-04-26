@@ -329,7 +329,7 @@ export default{
     addCart (id) {
       this.showModal=true;
       //做登录拦截
-      this.axios.get('product'+ id +'.json').then((res)=>{
+      this.axios.get('/json/phone/product'+ id +'.json').then((res)=>{
         this.product = res.data.data;
         let pro = {}
         pro.productId=this.product.id;
@@ -359,7 +359,7 @@ export default{
       
     },
     getPhoneList(){
-      this.axios.get('phoneList8.json').then((res)=>{
+      this.axios.get('/json/phoneList8.json').then((res)=>{
         let result = res.data.data;
         let arr = []
         arr[0]=result.phoneList.slice(0,4)

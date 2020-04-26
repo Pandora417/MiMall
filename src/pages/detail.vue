@@ -125,7 +125,7 @@ export default{
       this.detailCart.push(pro)
     },
     getProductInfo(){
-      this.axios.get('product'+ this.id +'.json').then((res)=>{
+      this.axios.get('/json/phone/product'+ this.id +'.json').then((res)=>{
         this.product = res.data.data;
         // console.log(this.product)
       })

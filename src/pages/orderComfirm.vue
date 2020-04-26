@@ -196,7 +196,7 @@ export default{
   methods:{
     //获取默认地址列表
     getAddressList(){
-      this.$axios.get('address.json').then((res)=>{
+      this.$axios.get('/json/address.json').then((res)=>{
         this.addressList.push(res.data)
         this.$store.dispatch('saveAddressList',JSON.stringify(this.addressList));
         // console.log(this.addressList)

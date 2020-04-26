@@ -160,7 +160,7 @@ export default{
       this.$router.push('/login');
     },
     getProductList(){
-      this.axios.get('product.json').then((res) => { // 只要是放在public文件夹下的json文件都可以不修改配置直接引入
+      this.axios.get('/json/products6.json').then((res) => { // 只要是放在public文件夹下的json文件都可以不修改配置直接引入
         let result = res.data;
         if (result.status == 0) {
           this.data = result.data;

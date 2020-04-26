@@ -64,7 +64,7 @@ export default {
     ...mapActions(['saveUserName']), //解构 替代
     register () {
       this.saveUserName(this.username)
-      this.axios.get('register.json').then(() => {this.$message.success('注册成功')});    
+      this.axios.get('/json/register.json').then(() => {this.$message.success('注册成功')});    
       this.$router.push('/index');
     }
   }
