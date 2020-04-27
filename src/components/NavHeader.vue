@@ -48,7 +48,19 @@
           </div>
           <div class="item-menu">
             <span>RedMi红米</span>
-            <div class="children"></div>
+            <div class="children">
+              <ul>
+                <li class="product" v-for="(item,index) in redmi" :key="index">
+                  <a v-bind:href="'/#/product/' + item.id" target="_blank">
+                    <div class="pro-img">
+                      <img v-lazy="item.mainImage" :alt="item.subtitle">
+                    </div>
+                    <div class="pro-name">{{item.name}}</div>
+                    <div class="pro-price">{{item.price | currency}}</div>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
           <div class="item-menu">
             <span>电视</span>
@@ -64,7 +76,7 @@
                   </a>
                 </li>
                 <li class="product">
-                  <a href="" target="_blank">
+                  <a href="javascript:;">
                     <div class="pro-img">
                       <img v-lazy="'/imgs/nav-img/nav-3-2.jpg'">
                     </div>
@@ -73,7 +85,7 @@
                   </a>
                 </li>
                 <li class="product">
-                  <a href="" target="_blank">
+                  <a href="javascript:;">
                     <div class="pro-img">
                       <img v-lazy="'/imgs/nav-img/nav-3-3.png'">
                     </div>
@@ -82,7 +94,7 @@
                   </a>
                 </li>
                 <li class="product">
-                  <a href="" target="_blank">
+                  <a href="javascript:;">
                     <div class="pro-img">
                       <img v-lazy="'/imgs/nav-img/nav-3-4.jpg'">
                     </div>
@@ -91,7 +103,7 @@
                   </a>
                 </li>
                 <li class="product">
-                  <a href="" target="_blank">
+                  <a href="javascript:;">
                     <div class="pro-img">
                       <img v-lazy="'/imgs/nav-img/nav-3-5.jpg'">
                     </div>
@@ -100,7 +112,7 @@
                   </a>
                 </li>
                 <li class="product">
-                  <a href="" target="_blank">
+                  <a href="javascript:;">
                     <div class="pro-img">
                       <img v-lazy="'/imgs/nav-img/nav-3-6.png'">
                     </div>
@@ -134,7 +146,8 @@ export default{
       styleObject:{
         display:'none'
       },
-      cartCount:0
+      cartCount:0,
+      redmi:[]  //六个红米手机
     }
   },
   computed:{
@@ -168,6 +181,12 @@ export default{
         }
       })
     },
+    getRedMi(){
+      this.axios.get('/json/redmi6.json').then((res)=>{
+        this.redmi = res.data.data.phoneList
+        console.log(this.redmi)
+      })
+    },
     goCart(){
       if(this.username){
         this.$router.push('/cart')
@@ -191,6 +210,7 @@ export default{
   mounted(){
     this.getProductList();
     this.getCartCount();
+    this.getRedMi();
   }
 }
 </script>

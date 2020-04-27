@@ -1,0 +1,11 @@
+{
+  "status": 0,
+  "data": {
+    "id": 12,
+    "name": "Redmi Note 8",
+    "subtitle": "高通骁龙665八核处理器",
+    "mainImage": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b4534b9fd22f478314f3cbbf286b7338.png",
+    "status":1,
+    "price": 999
+  }
+}

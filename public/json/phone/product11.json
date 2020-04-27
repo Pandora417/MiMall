@@ -1,0 +1,11 @@
+{
+  "status": 0,
+  "data": {
+    "id": 11,
+    "name": "Redmi Note 8 Pro",
+    "subtitle": "6400万四摄小金刚 拍照新旗舰",
+    "mainImage": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/cba27e53367b74271a38a4515a692816.png",
+    "status":1,
+    "price": 1299
+  }
+}

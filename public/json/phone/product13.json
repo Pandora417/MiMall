@@ -1,0 +1,11 @@
+{
+  "status": 0,
+  "data": {
+    "id": 13,
+    "name": "Redmi 7A",
+    "subtitle": "Adreno 505 图形处理器，最高主频650MHz",
+    "mainImage": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/85d746207b997873ddfcdca0da025f78.jpg",
+    "status":1,
+    "price": 549
+  }
+}

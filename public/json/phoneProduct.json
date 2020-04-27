@@ -1,0 +1,177 @@
+{
+  "status": 0,
+  "data": {
+    "phoneList":[
+      [
+        {
+          "id": 1,
+          "name": "小米10",
+          "subtitle": "骁龙865/1亿像素相机",
+          "mainImage": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0099822e42b4428cb25c4cdebc6ca53d.jpg?thumb=1&w=200&h=200&f=webp&q=90",
+          "status":1,
+          "price": 3999
+        },
+        {
+          "id": 2,
+          "name": "Redmi K30 Pro",
+          "subtitle": "双模5G，骁龙865，弹出全面屏",
+          "mainImage": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c1aafa589258a4d9fdf49831b457418d.jpg?thumb=1&w=200&h=200&f=webp&q=90",
+          "status":1,
+          "price": 2999
+        },
+        {
+          "id": 3,
+          "name": "Redmi K30 Pro 变焦版",
+          "subtitle": "双模5G，骁龙865，弹出全面屏",
+          "mainImage": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/7cfdbce40301133a287e9e57faa37bdf.jpg?thumb=1&w=200&h=200&f=webp&q=90",
+          "status":1,
+          "price": 3799
+        },
+        {
+          "id": 4,
+          "name": "小米10 Pro",
+          "subtitle": "骁龙865 / 50倍变焦",
+          "mainImage": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ccd09671448c4cdb4a3817f68f788662.jpg?thumb=1&w=200&h=200&f=webp&q=90",
+          "status":1,
+          "price": 4999
+        }
+      ],
+      [
+        {
+          "id": 5,
+          "name": "Redmi K30",
+          "subtitle": "120Hz流速屏，全速热爱",
+          "mainImage": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2c16238f786e4f93bdb175d7bf21aa47.jpg?thumb=1&w=200&h=200&f=webp&q=90",
+          "status":1,
+          "price": 1699
+        },
+        {
+          "id": 6,
+          "name": "Redmi K30 5G",
+          "subtitle": "双模5G，120Hz流速屏",
+          "mainImage": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/53641901fbc28cbcdb495b17fdf69e46.jpg?thumb=1&w=200&h=200&f=webp&q=90",
+          "status":1,
+          "price": 1999
+        },
+        {
+          "id": 7,
+          "name": "Redmi 8",
+          "subtitle": "5000mAh超长续航",
+          "mainImage": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d295c4fb500d163a7045dc715b47f808.jpg?thumb=1&w=200&h=200&f=webp&q=90",
+          "status":1,
+          "price": 699
+        },
+        {
+          "id": 8,
+          "name": "Redmi 8A",
+          "subtitle": "5000mAh超长续航",
+          "mainImage": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c924c3f3436b6934495fd98f159ee3f7.jpg?thumb=1&w=200&h=200&f=webp&q=90",
+          "status":1,
+          "price": 599
+        }
+      ],
+      [
+        {
+          "id": 9,
+          "name": "腾讯黑鲨游戏手机3",
+          "subtitle": "Solar Core游戏引擎",
+          "mainImage": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b0f790442e629d548f65a3f3902b7d0a.png",
+          "status":1,
+          "price": 3799
+        },
+        {
+          "id": 10,
+          "name": "腾讯黑鲨游戏手机3 Pro",
+          "subtitle": "最高65W极速闪充+背部磁吸充电",
+          "mainImage": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/e1631ce0bdbbd86918e516412f49de13.png",
+          "status":1,
+          "price": 4699
+        },
+        {
+          "id": 11,
+          "name": "Redmi Note 8 Pro",
+          "subtitle": "6400万四摄小金刚 拍照新旗舰",
+          "mainImage": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/cba27e53367b74271a38a4515a692816.png",
+          "status":1,
+          "price": 1299
+        },
+        {
+          "id": 12,
+          "name": "Redmi Note 8",
+          "subtitle": "高通骁龙665八核处理器",
+          "mainImage": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b4534b9fd22f478314f3cbbf286b7338.png",
+          "status":1,
+          "price": 999
+        }
+      ],
+      [
+        {
+          "id": 13,
+          "name": "Redmi 7A",
+          "subtitle": "Adreno 505 图形处理器，最高主频650MHz",
+          "mainImage": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/85d746207b997873ddfcdca0da025f78.jpg",
+          "status":1,
+          "price": 549
+        },
+        {
+          "id": 30,
+          "name": "小米CC9",
+          "subtitle": "3200万+4800万 前后双旗舰相机",
+          "mainImage": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/f515ab05232ed14ccd78ec67e024495a.png",
+          "status":1,
+          "price": 1799
+        },
+        {
+          "id": 31,
+          "name": "小米CC9e",
+          "subtitle": "3200万+4800万 前后双旗舰相机",
+          "mainImage": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/df9b3e7a562e02a33eb069b3f0119815.png",
+          "status":1,
+          "price": 1299
+        },
+        {
+          "id": 32,
+          "name": "小米CC9 美图定制版",
+          "subtitle": "3200万+4800万 前后双旗舰相机",
+          "mainImage": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/b02f50c9dd2e01c139a06a12502755ef.png",
+          "status":1,
+          "price": 2599
+        }
+      ],
+      [
+        {
+          "id": 33,
+          "name": "小米9",
+          "subtitle": "小米9 战斗天使",
+          "mainImage": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/2c9307e9690dfbca39d8de770a7a8664.png",
+          "status":1,
+          "price": 2599
+        },
+        {
+          "id": 34,
+          "name": "小米9 Pro 5G",
+          "subtitle": "快的不只是5G",
+          "mainImage": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/41c566d825a3ae3b5751a78d4c7cffdb.png",
+          "status":1,
+          "price": 3699
+        },
+        {
+          "id": 35,
+          "name": "小米MIX Alpha",
+          "subtitle": "5G环绕屏概念手机",
+          "mainImage": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/5d19da60f9f62eb2aa5dcdbd7df19f0f.png",
+          "status":1,
+          "price": 19999
+        },
+        {
+          "id": 36,
+          "name": "红米6（移动4G+）版",
+          "subtitle": "AI双摄，小屏高性能 ",
+          "mainImage": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/6d0aab16e4264a97f615ba3041d71b6c.jpg?w=1212&h=716",
+          "status":1,
+          "price": 919
+        }
+      ]
+    ]  
+  }
+}

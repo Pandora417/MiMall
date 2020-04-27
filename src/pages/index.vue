@@ -10,7 +10,7 @@
                 <ul v-for="(item,index) in menuList" :key="index">
                   <li v-for="sub in item" :key="sub.id">
                     <a :href="'/#/product/' + sub.id" target="_blank">
-                      <img :src="sub.img" alt="">
+                      <img v-lazy="sub.mainImage" alt="">
                       {{sub.name}}
                     </a>
                   </li>
@@ -172,134 +172,7 @@ export default{
         },
       ],
       menuList:[ //菜单栏中的手机参数
-        [
-          {
-            id:0,
-            img:'/imgs/item-box-1.png',
-            name:'小米CC9'
-          },
-          {
-            id:1,
-            img:'/imgs/item-box-2.png',
-            name:'小米CC9'
-          },
-          {
-            id:2,
-            img:'/imgs/item-box-3.jpg',
-            name:'小米CC9'
-          },
-          {
-            id:3,
-            img:'/imgs/item-box-4.jpg',
-            name:'小米CC9'
-          },
-        ],
-        [
-          {
-            id:0,
-            img:'/imgs/item-box-1.png',
-            name:'小米CC9'
-          },
-          {
-            id:1,
-            img:'/imgs/item-box-2.png',
-            name:'小米CC9'
-          },
-          {
-            id:2,
-            img:'/imgs/item-box-3.jpg',
-            name:'小米CC9'
-          },
-          {
-            id:3,
-            img:'/imgs/item-box-4.jpg',
-            name:'小米CC9'
-          },
-        ],[
-          {
-            id:0,
-            img:'/imgs/item-box-1.png',
-            name:'小米CC9'
-          },
-          {
-            id:1,
-            img:'/imgs/item-box-2.png',
-            name:'小米CC9'
-          },
-          {
-            id:2,
-            img:'/imgs/item-box-3.jpg',
-            name:'小米CC9'
-          },
-          {
-            id:3,
-            img:'/imgs/item-box-4.jpg',
-            name:'小米CC9'
-          },
-        ],[
-          {
-            id:0,
-            img:'/imgs/item-box-1.png',
-            name:'小米CC9'
-          },
-          {
-            id:1,
-            img:'/imgs/item-box-2.png',
-            name:'小米CC9'
-          },
-          {
-            id:2,
-            img:'/imgs/item-box-3.jpg',
-            name:'小米CC9'
-          },
-          {
-            id:3,
-            img:'/imgs/item-box-4.jpg',
-            name:'小米CC9'
-          },
-        ],[
-          {
-            id:0,
-            img:'/imgs/item-box-1.png',
-            name:'小米CC9'
-          },
-          {
-            id:1,
-            img:'/imgs/item-box-2.png',
-            name:'小米CC9'
-          },
-          {
-            id:2,
-            img:'/imgs/item-box-3.jpg',
-            name:'小米CC9'
-          },
-          {
-            id:3,
-            img:'/imgs/item-box-4.jpg',
-            name:'小米CC9'
-          },
-        ],[
-          {
-            id:0,
-            img:'/imgs/item-box-1.png',
-            name:'小米CC9'
-          },
-          {
-            id:1,
-            img:'/imgs/item-box-2.png',
-            name:'小米CC9'
-          },
-          {
-            id:2,
-            img:'/imgs/item-box-3.jpg',
-            name:'小米CC9'
-          },
-          {
-            id:3,
-            img:'/imgs/item-box-4.jpg',
-            name:'小米CC9'
-          },
-        ]
+
       ],
       adsList:[ //广告位的手机参数
         {
@@ -322,10 +195,16 @@ export default{
       phoneList:[],//手机展示区
       showModal:false,
       indexCart:[], //index页面的加入购物车数组
-      product:{}
+      product:{},
+      
     }
   },
   methods:{
+    getPhoneProduct(){
+      this.axios.get('/json/phoneProduct.json').then((res)=>{
+        this.menuList = res.data.data.phoneList
+      })
+    },
     addCart (id) {
       this.showModal=true;
       //做登录拦截
@@ -369,6 +248,7 @@ export default{
     }
   },
   mounted(){
+    this.getPhoneProduct()
     this.getPhoneList()
   }
 }
@@ -436,7 +316,7 @@ export default{
                 line-height: 75px;
                 width: 241px;
                 flex: 1;
-                padding-left: 23px;
+                // padding-left: 23px;
                 a{
                   color:$colorB;
                   font-size: 14px;
